@@ -44,7 +44,7 @@ public class Cola {
         String mensaje="";
         NodoCola aux=frente;
         while(aux!=null){
-            mensaje+=aux.getDato().getOrden();
+            mensaje+=aux.getDato().getOrden()+ "\n";
             aux=aux.getAtras();
         }
         return mensaje;
