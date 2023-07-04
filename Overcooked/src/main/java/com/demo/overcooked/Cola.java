@@ -29,4 +29,14 @@ public class Cola {
         }
         largo++;
     }
+    
+    public NodoCola atiende(){
+        NodoCola aux = frente;
+        if(frente!=null){
+            frente=frente.getAtras();
+            aux.setAtras(null);
+            largo--;
+        }
+        return aux;
+    }
 }
