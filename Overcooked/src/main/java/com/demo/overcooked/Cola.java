@@ -39,4 +39,15 @@ public class Cola {
         }
         return aux;
     }
+    
+    public String imprimir(){
+        String mensaje="";
+        NodoCola aux=frente;
+        while(aux!=null){
+            mensaje+=aux.getDato().getOrden();
+            aux=aux.getAtras();
+        }
+        return mensaje;
+    }
+    
 }
