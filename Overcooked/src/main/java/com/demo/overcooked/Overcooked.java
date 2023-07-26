@@ -14,8 +14,9 @@ public class Overcooked {
 
     public static void main(String[] args) {
         Cola cola = new Cola();
-        
-        
+        PantallaInicio inicio = new PantallaInicio();
+        inicio.setVisible(true);
+               
     }
     
     public static String generarOrden(){
