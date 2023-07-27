@@ -13,6 +13,7 @@ import javax.swing.JLabel;
  * @author XPC
  */
 public class PantallaInicio extends javax.swing.JFrame {
+    PantallaJuego pantallajuego = new PantallaJuego();
 
     /**
      * Creates new form PantallaInicio
@@ -77,7 +78,7 @@ public class PantallaInicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
-        // TODO add your handling code here:
+        pantallajuego.setVisible(true);
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     
