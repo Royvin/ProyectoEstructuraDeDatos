@@ -79,6 +79,7 @@ public class PantallaInicio extends javax.swing.JFrame {
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         pantallajuego.setVisible(true);
+        
     }//GEN-LAST:event_btnIniciarActionPerformed
 
     

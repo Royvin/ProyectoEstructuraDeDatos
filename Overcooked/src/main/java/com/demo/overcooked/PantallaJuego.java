@@ -11,13 +11,39 @@ package com.demo.overcooked;
 public class PantallaJuego extends javax.swing.JFrame {
     int segundos=30;
     
+    
 
     /**
      * Creates new form PantallaJuego
      */
     public PantallaJuego() {
         initComponents();
+        boolean estado = true;
         this.setLocationRelativeTo(this);
+        lblCronometro.setText("30");
+        Thread hilo = new Thread(){
+            public void run(){
+                for(;;){
+                    if(estado){
+                        try{
+                            sleep(1000);
+                            if(segundos == 0){
+                                segundos = 30;
+                            }else{
+                                segundos--;
+                            }
+                            lblCronometro.setText(segundos + " ");
+                        }catch(Exception e){
+                            
+                        }
+                    }else{
+                        break;
+                        
+                    }
+                }
+            }
+        };
+    hilo.start();
     }
 
     /**
