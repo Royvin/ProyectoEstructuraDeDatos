@@ -12,9 +12,10 @@ import static java.lang.Thread.sleep;
  */
 public class PantallaJuego extends javax.swing.JFrame {
     int segundos=60;
+    int segundosOrden=20;
     int minutos=5;
     boolean estado = true;
-    
+    boolean estadoTimer=true;
 
     /**
      * Creates new form PantallaJuego
@@ -22,6 +23,7 @@ public class PantallaJuego extends javax.swing.JFrame {
     public PantallaJuego() {
         initComponents();
         Cronometro();
+        TimerNuevaOrden();
     }
 
     /**
@@ -36,6 +38,7 @@ public class PantallaJuego extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         lblCronometro = new javax.swing.JLabel();
         lblCuentaRegresiva = new javax.swing.JLabel();
+        lblTimerOrden = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,12 +53,18 @@ public class PantallaJuego extends javax.swing.JFrame {
         lblCuentaRegresiva.setForeground(new java.awt.Color(0, 0, 0));
         lblCuentaRegresiva.setText("Tiempo Restante");
 
+        lblTimerOrden.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        lblTimerOrden.setForeground(new java.awt.Color(0, 0, 0));
+        lblTimerOrden.setText("Nueva Orden En: 20");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 499, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(lblTimerOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 360, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblCuentaRegresiva, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
                     .addComponent(lblCronometro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -63,7 +72,9 @@ public class PantallaJuego extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(lblCuentaRegresiva, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCuentaRegresiva, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTimerOrden))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblCronometro, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(329, Short.MAX_VALUE))
@@ -88,37 +99,67 @@ public class PantallaJuego extends javax.swing.JFrame {
      */
 public void Cronometro(){
     estado = true;
-        this.setLocationRelativeTo(this);
-        lblCronometro.setText("5:00");
-        Thread hilo = new Thread(){
-            public void run(){
-                for(;;){
-                    if(estado){
-                        try{
-                            sleep(1000);
-                            if(segundos == 0){
-                                segundos = 60;
-                                minutos--;
-                            }else{
-                                segundos--;
-                            }
-                            lblCronometro.setText(minutos + " : " +segundos);
-                        }catch(Exception e){
-                            
+    this.setLocationRelativeTo(this);
+    lblCronometro.setText("5:00");
+    Thread hilo = new Thread(){
+        public void run(){
+            for(;;){
+                if(estado){
+                    try{
+                        sleep(1000);
+                        if(segundos == 0){
+                            segundos = 60;
+                            minutos--;
+                        }else{
+                            segundos--;
                         }
-                    }else{
-                        break;
-                        
+                        lblCronometro.setText(minutos + ":" +segundos);
+                    }catch(Exception e){
+
                     }
+                }else{
+                    break;
+
                 }
             }
-        };
+        }
+    };
     hilo.start();
 }
+public void TimerNuevaOrden(){
+   estadoTimer = true;
+    this.setLocationRelativeTo(this);
+    lblTimerOrden.setText("Nueva Orden En: 20");
+    Thread hilo = new Thread(){
+        public void run(){
+            for(;;){
+                if(estado){
+                    try{
+                        sleep(1000);
+                        if(segundosOrden == 0){
+                            segundosOrden = 20;
+                        }else{
+                            segundosOrden--;
+                        }
+                        lblTimerOrden.setText("Nueva Orden En: " +segundosOrden);
+                    }catch(Exception e){
+
+                    }
+                }else{
+                    break;
+
+                }
+            }
+        }
+    };
+    hilo.start();
+} 
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCronometro;
     private javax.swing.JLabel lblCuentaRegresiva;
+    private javax.swing.JLabel lblTimerOrden;
     // End of variables declaration//GEN-END:variables
 }
