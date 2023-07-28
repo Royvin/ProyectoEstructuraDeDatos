@@ -9,7 +9,7 @@ package com.demo.overcooked;
  * @author XPC
  */
 public class PantallaJuego extends javax.swing.JFrame {
-    int segundos=30;
+    int segundos=20;
     
     
 
@@ -20,7 +20,7 @@ public class PantallaJuego extends javax.swing.JFrame {
         initComponents();
         boolean estado = true;
         this.setLocationRelativeTo(this);
-        lblCronometro.setText("30");
+        lblCronometro.setText("20");
         Thread hilo = new Thread(){
             public void run(){
                 for(;;){
@@ -28,7 +28,7 @@ public class PantallaJuego extends javax.swing.JFrame {
                         try{
                             sleep(1000);
                             if(segundos == 0){
-                                segundos = 30;
+                                segundos = 20;
                             }else{
                                 segundos--;
                             }
@@ -66,7 +66,7 @@ public class PantallaJuego extends javax.swing.JFrame {
         lblCronometro.setFont(new java.awt.Font("Dialog", 0, 48)); // NOI18N
         lblCronometro.setForeground(new java.awt.Color(0, 0, 0));
         lblCronometro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCronometro.setText("30");
+        lblCronometro.setText("20");
 
         lblCuentaRegresiva.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblCuentaRegresiva.setForeground(new java.awt.Color(0, 0, 0));
