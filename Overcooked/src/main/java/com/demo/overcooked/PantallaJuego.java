@@ -4,7 +4,11 @@
  */
 package com.demo.overcooked;
 
+import java.awt.Image;
 import static java.lang.Thread.sleep;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  *
@@ -22,6 +26,10 @@ public class PantallaJuego extends javax.swing.JFrame {
      */
     public PantallaJuego() {
         initComponents();
+        String root = "C:\\Users\\XPC\\Documents\\1-UNIVERSIDAD\\Estructura de Datos\\ProyectoEstructuraDeDatos\\IMAGENES\\papelOrden.jpg";
+        SetImageLabel(lblOrden3, root);
+        SetImageLabel(lblOrden2, root);
+        SetImageLabel(lblOrden1, root);
         Cronometro();
         TimerNuevaOrden();
     }
@@ -39,57 +47,44 @@ public class PantallaJuego extends javax.swing.JFrame {
         lblCronometro = new javax.swing.JLabel();
         lblCuentaRegresiva = new javax.swing.JLabel();
         lblTimerOrden = new javax.swing.JLabel();
+        lblOrden2 = new javax.swing.JLabel();
+        lblOrden1 = new javax.swing.JLabel();
+        lblOrden3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 102));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblCronometro.setFont(new java.awt.Font("Dialog", 0, 48)); // NOI18N
         lblCronometro.setForeground(new java.awt.Color(0, 0, 0));
         lblCronometro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCronometro.setText("5:00");
+        jPanel1.add(lblCronometro, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, 121, 75));
 
         lblCuentaRegresiva.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblCuentaRegresiva.setForeground(new java.awt.Color(0, 0, 0));
         lblCuentaRegresiva.setText("Tiempo Restante");
+        jPanel1.add(lblCuentaRegresiva, new org.netbeans.lib.awtextra.AbsoluteConstraints(499, 0, 121, 21));
 
         lblTimerOrden.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         lblTimerOrden.setForeground(new java.awt.Color(0, 0, 0));
         lblTimerOrden.setText("Nueva Orden En: 20");
+        jPanel1.add(lblTimerOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 3, 127, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTimerOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 360, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblCuentaRegresiva, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
-                    .addComponent(lblCronometro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCuentaRegresiva, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTimerOrden))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblCronometro, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(329, Short.MAX_VALUE))
-        );
+        lblOrden2.setText("jLabel1");
+        jPanel1.add(lblOrden2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 70, 80));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        lblOrden1.setText("jLabel1");
+        jPanel1.add(lblOrden1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 70, 80));
+
+        lblOrden3.setBackground(new java.awt.Color(255, 255, 255));
+        lblOrden3.setForeground(new java.awt.Color(255, 255, 255));
+        lblOrden3.setAutoscrolls(true);
+        jPanel1.add(lblOrden3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 70, 80));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 430));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -154,12 +149,22 @@ public void TimerNuevaOrden(){
     };
     hilo.start();
 } 
+private void SetImageLabel (JLabel labelName, String root){
+        ImageIcon image = new ImageIcon(root);
+        Icon icon = new ImageIcon(image.getImage().getScaledInstance
+        (labelName.getWidth(), labelName.getHeight(), Image.SCALE_DEFAULT));
+        labelName.setIcon(icon);
+        this.repaint();
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCronometro;
     private javax.swing.JLabel lblCuentaRegresiva;
+    private javax.swing.JLabel lblOrden1;
+    private javax.swing.JLabel lblOrden2;
+    private javax.swing.JLabel lblOrden3;
     private javax.swing.JLabel lblTimerOrden;
     // End of variables declaration//GEN-END:variables
 }
