@@ -13,6 +13,7 @@ public class Cola {
     private NodoCola ultimo;
     private int largo;
     
+    
     public Cola() {
         this.frente = null;
         this.ultimo = null;
@@ -47,6 +48,24 @@ public class Cola {
             mensaje+=aux.getDato().getOrden()+ "\n";
             aux=aux.getAtras();
         }
+        return mensaje;
+    }
+    
+    public String getOrden1(){
+        String mensaje="";
+        mensaje=frente.getDato().getOrden();
+        return mensaje;
+    }
+    public String getOrden2(){
+        String mensaje="";
+        NodoCola aux=frente;
+        aux.getAtras();
+        mensaje=aux.getDato().getOrden();
+        return mensaje;
+    }
+    public String getOrden3(){
+        String mensaje="";
+        mensaje=ultimo.getDato().getOrden();
         return mensaje;
     }
     

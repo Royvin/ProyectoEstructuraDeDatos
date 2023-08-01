@@ -5,9 +5,13 @@
 package com.demo.overcooked;
 
 import java.awt.Image;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import static java.lang.Thread.sleep;
+import java.util.Random;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 /**
@@ -20,6 +24,9 @@ public class PantallaJuego extends javax.swing.JFrame {
     int minutos=5;
     boolean estado = true;
     boolean estadoTimer=true;
+    Cola cola = new Cola();    
+    NodoCola nodo = new NodoCola(null);
+
 
     /**
      * Creates new form PantallaJuego
@@ -32,6 +39,19 @@ public class PantallaJuego extends javax.swing.JFrame {
         SetImageLabel(lblOrden1, root);
         Cronometro();
         TimerNuevaOrden();
+        
+        // Agregar un ComponentListener para detectar cambios en el tamaño del JFrame
+        addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                ajustarTamanoComponente();
+            }
+        });
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     /**
@@ -52,6 +72,7 @@ public class PantallaJuego extends javax.swing.JFrame {
         lblOrden3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 204, 102));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 102));
@@ -61,30 +82,26 @@ public class PantallaJuego extends javax.swing.JFrame {
         lblCronometro.setForeground(new java.awt.Color(0, 0, 0));
         lblCronometro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblCronometro.setText("5:00");
-        jPanel1.add(lblCronometro, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 10, 121, 75));
+        jPanel1.add(lblCronometro, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 30, 121, 75));
 
         lblCuentaRegresiva.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblCuentaRegresiva.setForeground(new java.awt.Color(0, 0, 0));
         lblCuentaRegresiva.setText("Tiempo Restante");
-        jPanel1.add(lblCuentaRegresiva, new org.netbeans.lib.awtextra.AbsoluteConstraints(499, 0, 121, 21));
+        jPanel1.add(lblCuentaRegresiva, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 10, 121, 21));
 
         lblTimerOrden.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         lblTimerOrden.setForeground(new java.awt.Color(0, 0, 0));
         lblTimerOrden.setText("Nueva Orden En: 20");
         jPanel1.add(lblTimerOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 3, 127, -1));
-
-        lblOrden2.setText("jLabel1");
-        jPanel1.add(lblOrden2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, 70, 80));
-
-        lblOrden1.setText("jLabel1");
-        jPanel1.add(lblOrden1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 70, 80));
+        jPanel1.add(lblOrden2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 240, 150));
+        jPanel1.add(lblOrden1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 270, 150));
 
         lblOrden3.setBackground(new java.awt.Color(255, 255, 255));
-        lblOrden3.setForeground(new java.awt.Color(255, 255, 255));
+        lblOrden3.setForeground(new java.awt.Color(0, 0, 0));
         lblOrden3.setAutoscrolls(true);
-        jPanel1.add(lblOrden3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 70, 80));
+        jPanel1.add(lblOrden3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 320, 150));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 430));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 790));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -92,40 +109,51 @@ public class PantallaJuego extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-public void Cronometro(){
-    estado = true;
-    this.setLocationRelativeTo(this);
-    lblCronometro.setText("5:00");
-    Thread hilo = new Thread(){
-        public void run(){
-            for(;;){
-                if(estado){
-                    try{
-                        sleep(1000);
-                        if(segundos == 0){
-                            segundos = 60;
-                            minutos--;
-                        }else{
-                            segundos--;
+    
+    
+
+    private void ajustarTamanoComponente() {
+        // Ajustar el tamaño del JPanel al tamaño actual del JFrame
+        jPanel1.setSize(getSize());
+        jPanel1.setPreferredSize(getSize());
+    }
+    public void Cronometro(){
+        estado = true;
+        this.setLocationRelativeTo(this);
+        lblCronometro.setText("5:00");
+        Thread hilo = new Thread(){
+            public void run(){
+                for(;;){
+                    if(estado){
+                        try{
+                            sleep(1000);
+                            if(segundos == 0){
+                                segundos = 60;
+                                minutos--;
+                            }else{
+                                segundos--;
+                            }
+                            lblCronometro.setText(minutos + ":" +segundos);
+                        }catch(Exception e){
+
                         }
-                        lblCronometro.setText(minutos + ":" +segundos);
-                    }catch(Exception e){
+                    }else{
+                        break;
 
                     }
-                }else{
-                    break;
-
                 }
             }
-        }
-    };
-    hilo.start();
-}
-public void TimerNuevaOrden(){
-   estadoTimer = true;
-    this.setLocationRelativeTo(this);
-    lblTimerOrden.setText("Nueva Orden En: 20");
-    Thread hilo = new Thread(){
+        };
+        hilo.start();
+    }
+    
+    
+    
+    public void TimerNuevaOrden(){
+       estadoTimer = true;
+        this.setLocationRelativeTo(this);
+        lblTimerOrden.setText("Nueva Orden En: 20");
+        Thread hilo = new Thread(){
         public void run(){
             for(;;){
                 if(estado){
@@ -133,9 +161,13 @@ public void TimerNuevaOrden(){
                         sleep(1000);
                         if(segundosOrden == 0){
                             segundosOrden = 20;
-                        }else{
+                            setNuevaOrden();
+                        }
+                        
+                        else{
                             segundosOrden--;
                         }
+
                         lblTimerOrden.setText("Nueva Orden En: " +segundosOrden);
                     }catch(Exception e){
 
@@ -146,15 +178,28 @@ public void TimerNuevaOrden(){
                 }
             }
         }
-    };
-    hilo.start();
-} 
-private void SetImageLabel (JLabel labelName, String root){
-        ImageIcon image = new ImageIcon(root);
-        Icon icon = new ImageIcon(image.getImage().getScaledInstance
-        (labelName.getWidth(), labelName.getHeight(), Image.SCALE_DEFAULT));
-        labelName.setIcon(icon);
-        this.repaint();
+        };
+        setNuevaOrden();
+        hilo.start();
+    } 
+    private void SetImageLabel (JLabel labelName, String root){
+//        ImageIcon image = new ImageIcon(root);
+//        Icon icon = new ImageIcon(image.getImage().getScaledInstance
+//        (labelName.getWidth(), labelName.getHeight(), Image.SCALE_DEFAULT));
+//        labelName.setIcon(icon);
+//        this.repaint();
+    }
+    
+    public void setNuevaOrden(){
+        Overcooked orden = new Overcooked();
+        cola.encola(new NodoCola(new Orden(orden.generarOrden())));
+        if(lblOrden1.getText() == null || lblOrden1.getText().length() == 0){
+           
+        }else if(lblOrden2.getText() == null || lblOrden2.getText().length() == 0){
+            
+        }else if(lblOrden3.getText() == null || lblOrden3.getText().length() == 0){
+            
+        }
     }
 
 
