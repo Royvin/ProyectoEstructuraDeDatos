@@ -93,13 +93,13 @@ public class PantallaJuego extends javax.swing.JFrame {
         lblTimerOrden.setForeground(new java.awt.Color(0, 0, 0));
         lblTimerOrden.setText("Nueva Orden En: 20");
         jPanel1.add(lblTimerOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 3, 127, -1));
-        jPanel1.add(lblOrden2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 200, 240, 150));
-        jPanel1.add(lblOrden1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 270, 150));
+        jPanel1.add(lblOrden2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 110, 150));
+        jPanel1.add(lblOrden1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 110, 150));
 
         lblOrden3.setBackground(new java.awt.Color(255, 255, 255));
         lblOrden3.setForeground(new java.awt.Color(0, 0, 0));
         lblOrden3.setAutoscrolls(true);
-        jPanel1.add(lblOrden3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 320, 150));
+        jPanel1.add(lblOrden3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 110, 150));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, 790));
 
@@ -183,11 +183,11 @@ public class PantallaJuego extends javax.swing.JFrame {
         hilo.start();
     } 
     private void SetImageLabel (JLabel labelName, String root){
-//        ImageIcon image = new ImageIcon(root);
-//        Icon icon = new ImageIcon(image.getImage().getScaledInstance
-//        (labelName.getWidth(), labelName.getHeight(), Image.SCALE_DEFAULT));
-//        labelName.setIcon(icon);
-//        this.repaint();
+        ImageIcon image = new ImageIcon(root);
+        Icon icon = new ImageIcon(image.getImage().getScaledInstance
+        (labelName.getWidth(), labelName.getHeight(), Image.SCALE_DEFAULT));
+        labelName.setIcon(icon);
+        this.repaint();
     }
     
     public void setNuevaOrden(){
