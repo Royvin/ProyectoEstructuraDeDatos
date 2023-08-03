@@ -8,12 +8,12 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
 /**
  *
  * @author XPC
  */
 public class PantallaInicio extends javax.swing.JFrame {
-    
 
     /**
      * Creates new form PantallaInicio
@@ -21,8 +21,9 @@ public class PantallaInicio extends javax.swing.JFrame {
     public PantallaInicio() {
         initComponents();
         this.setLocationRelativeTo(this);
-        String root = "C:\\Users\\XPC\\Documents\\1-UNIVERSIDAD\\Estructura de Datos\\ProyectoEstructuraDeDatos\\IMAGENES\\PANTALLA INICIO.jpg";
-        SetImageLabel(lblFondo, root);
+        
+        String root = "images/background-image-homepage.jpg";
+        setBackgroundImage(lblFondo, root);
     }
 
     /**
@@ -72,17 +73,20 @@ public class PantallaInicio extends javax.swing.JFrame {
         PantallaJuego pantallajuego = new PantallaJuego();
         pantallajuego.setVisible(true);
         this.setVisible(false);
-        
+
     }//GEN-LAST:event_btnIniciarActionPerformed
 
-    
-    private void SetImageLabel (JLabel labelName, String root){
-        ImageIcon image = new ImageIcon(root);
-        Icon icon = new ImageIcon(image.getImage().getScaledInstance
-        (labelName.getWidth(), labelName.getHeight(), Image.SCALE_DEFAULT));
-        labelName.setIcon(icon);
-        this.repaint();
+    private void setBackgroundImage(JLabel lblBackground, String imagePath) {
+        ImageIcon image = new ImageIcon(imagePath);
+        
+        Icon icon = new ImageIcon(image.getImage().getScaledInstance(
+                lblBackground.getWidth(),
+                lblBackground.getHeight(),
+                Image.SCALE_DEFAULT
+        ));
+        lblBackground.setIcon(icon);
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciar;
     private javax.swing.JPanel jPanel1;

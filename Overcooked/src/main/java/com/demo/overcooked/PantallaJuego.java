@@ -33,7 +33,7 @@ public class PantallaJuego extends javax.swing.JFrame {
      */
     public PantallaJuego() {
         initComponents();
-        String root = "C:\\Users\\XPC\\Documents\\1-UNIVERSIDAD\\Estructura de Datos\\ProyectoEstructuraDeDatos\\IMAGENES\\papelOrden.jpg";
+        String root = "images/papelOrden.jpg";
         SetImageLabel(lblOrden3, root);
         SetImageLabel(lblOrden2, root);
         SetImageLabel(lblOrden1, root);
