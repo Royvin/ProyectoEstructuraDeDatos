@@ -4,6 +4,7 @@
 
 package com.demo.overcooked;
 
+import com.demo.overcooked.ui.MainMenu;
 import java.util.Random;
 
 /**
@@ -13,9 +14,7 @@ import java.util.Random;
 public class Overcooked {
 
     public static void main(String[] args) {
-        Cola cola = new Cola();
-        PantallaInicio inicio = new PantallaInicio();
-        inicio.setVisible(true);     
+     new MainMenu().setVisible(true);
     }
     
     public static String generarOrden(){
