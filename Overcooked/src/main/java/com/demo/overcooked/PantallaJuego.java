@@ -20,7 +20,7 @@ import javax.swing.JLabel;
  */
 public class PantallaJuego extends javax.swing.JFrame {
     int segundos=60;
-    int segundosOrden=20;
+    int segundosOrden=5;
     int minutos=5;
     boolean estado = true;
     boolean estadoTimer=true;
@@ -34,9 +34,9 @@ public class PantallaJuego extends javax.swing.JFrame {
     public PantallaJuego() {
         initComponents();
         String root = "images/papelOrden.jpg";
-        SetImageLabel(lblOrden3, root);
-        SetImageLabel(lblOrden2, root);
-        SetImageLabel(lblOrden1, root);
+//        SetImageLabel(lblOrden3, root);
+//        SetImageLabel(lblOrden2, root);
+//        SetImageLabel(lblOrden1, root);
         Cronometro();
         TimerNuevaOrden();
         
@@ -70,6 +70,7 @@ public class PantallaJuego extends javax.swing.JFrame {
         lblOrden2 = new javax.swing.JLabel();
         lblOrden1 = new javax.swing.JLabel();
         lblOrden3 = new javax.swing.JLabel();
+        btnOrdenLista = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 204, 102));
@@ -92,13 +93,21 @@ public class PantallaJuego extends javax.swing.JFrame {
         lblTimerOrden.setForeground(new java.awt.Color(0, 0, 0));
         lblTimerOrden.setText("Nueva Orden En: 20");
         jPanel1.add(lblTimerOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 3, 127, -1));
-        jPanel1.add(lblOrden2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 110, 150));
-        jPanel1.add(lblOrden1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 110, 150));
+        jPanel1.add(lblOrden2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 370, 40));
+        jPanel1.add(lblOrden1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 370, 40));
 
         lblOrden3.setBackground(new java.awt.Color(255, 255, 255));
         lblOrden3.setForeground(new java.awt.Color(0, 0, 0));
         lblOrden3.setAutoscrolls(true);
-        jPanel1.add(lblOrden3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 110, 150));
+        jPanel1.add(lblOrden3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 370, 40));
+
+        btnOrdenLista.setText("ORDEN LISTA");
+        btnOrdenLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrdenListaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnOrdenLista, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 390, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,6 +126,11 @@ public class PantallaJuego extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnOrdenListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenListaActionPerformed
+            cola.atiende();
+            ordenarLabels();
+    }//GEN-LAST:event_btnOrdenListaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,7 +186,7 @@ public class PantallaJuego extends javax.swing.JFrame {
                     try{
                         sleep(1000);
                         if(segundosOrden == 0){
-                            segundosOrden = 20;
+                            segundosOrden = 5;
                             setNuevaOrden();
                         }
                         
@@ -204,18 +218,39 @@ public class PantallaJuego extends javax.swing.JFrame {
     
     public void setNuevaOrden(){
         Overcooked orden = new Overcooked();
-        cola.encola(new NodoCola(new Orden(orden.generarOrden())));
+//        if(lblOrden1.getText() == null || lblOrden1.getText().length() == 0){
+//           cola.encola(new NodoCola(new Orden(orden.generarOrden())));
+//           lblOrden1.setText(cola.imprimir()); 
+//        }
         if(lblOrden1.getText() == null || lblOrden1.getText().length() == 0){
-           
+           cola.encola(new NodoCola(new Orden(orden.generarOrden())));
+           lblOrden1.setText(cola.getOrden1());
         }else if(lblOrden2.getText() == null || lblOrden2.getText().length() == 0){
-            
+            cola.encola(new NodoCola(new Orden(orden.generarOrden())));
+            lblOrden2.setText(cola.getOrden2());
         }else if(lblOrden3.getText() == null || lblOrden3.getText().length() == 0){
-            
+            cola.encola(new NodoCola(new Orden(orden.generarOrden())));
+            lblOrden3.setText(cola.getOrden3());
         }
+    }
+    
+    public void ordenarLabels(){
+        
+        if(lblOrden1.getText() != null || lblOrden1.getText().length() > 0){
+            lblOrden1.setText("");
+            lblOrden1.setText(lblOrden2.getText());
+             if((lblOrden2.getText() != null || lblOrden2.getText().length() > 0) && (lblOrden3.getText() != null || lblOrden3.getText().length() > 0)){
+                lblOrden2.setText("");
+                lblOrden2.setText(lblOrden3.getText());
+                lblOrden3.setText("");
+            }
+        }
+       
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnOrdenLista;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCronometro;
     private javax.swing.JLabel lblCuentaRegresiva;

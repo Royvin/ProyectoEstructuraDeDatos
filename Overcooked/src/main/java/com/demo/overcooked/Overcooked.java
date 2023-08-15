@@ -19,9 +19,9 @@ public class Overcooked {
     }
     
     public static String generarOrden(){
-        String [] ordenes = {"Hamburguesa de carne(pan,carne)", 
-                            "Hamburguesa con queso (pan, carne, queso)", 
-                            "Hamburguesa clásica (pan, carne, lechuga, queso)"};
+        String [] ordenes = {"Hamburguesa \nde carne(\npan,\ncarne)", 
+                            "Hamburguesa \ncon queso (\npan, \ncarne, \nqueso)", 
+                            "Hamburguesa\n clásica (\npan, \ncarne, \nlechuga, \nqueso)"};
         
         Random random = new Random();
         int indice = random.nextInt(ordenes.length);
