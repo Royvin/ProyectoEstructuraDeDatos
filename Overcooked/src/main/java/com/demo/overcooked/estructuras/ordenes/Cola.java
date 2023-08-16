@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.demo.overcooked;
+package com.demo.overcooked.estructuras.ordenes;
 
 /**
  *
@@ -50,23 +50,6 @@ public class Cola {
         }
         return mensaje;
     }
-    
-    public String getOrden1(){
-        String mensaje="";
-        mensaje=frente.getDato().getOrden();
-        return mensaje;
-    }
-    public String getOrden2(){
-        String mensaje="";
-        NodoCola aux=frente;
-        aux.getAtras();
-        mensaje=aux.getDato().getOrden();
-        return mensaje;
-    }
-    public String getOrden3(){
-        String mensaje="";
-        mensaje=ultimo.getDato().getOrden();
-        return mensaje;
-    }
+
     
 }

@@ -4,12 +4,11 @@
  */
 package com.demo.overcooked.ui;
 
-import com.demo.overcooked.ui.orders.main.BigCheeseMeatBurger;
-import com.demo.overcooked.ui.orders.tiny.TinyCheeseBurger;
-import com.demo.overcooked.ui.orders.tiny.TinyCheeseMeatBurger;
-import com.demo.overcooked.ui.orders.tiny.TinyMeatBurger;
+import com.demo.overcooked.estructuras.ordenes.*;
+import com.demo.overcooked.ui.orders.tiny.*;
 import java.awt.BorderLayout;
-import java.awt.Color;
+import java.awt.Component;
+import java.util.Random;
 import javax.swing.JPanel;
 
 /**
@@ -18,12 +17,31 @@ import javax.swing.JPanel;
  */
 public class GameScreen extends javax.swing.JFrame {
 
+    private JPanel[] ordersContainers = new JPanel[3];
+    private JPanel[] orders = new JPanel[3];
+
+    int segundos = 60;
+    int segundosOrden = 5;
+    int minutos = 4;
+    Cola cola = new Cola();
+
     /**
      * Creates new form GameScreen
      */
     public GameScreen() {
         initComponents();
+
+        this.ordersContainers[0] = this.orderOne;
+        this.ordersContainers[1] = this.orderTwo;
+        this.ordersContainers[2] = this.orderThree;
+
+        this.orders[0] = new TinyCheeseBurger();
+        this.orders[1] = new TinyMeatBurger();
+        this.orders[2] = new TinyCheeseMeatBurger();
+
         initGameScreen();
+        gameCounter();
+        timerNewOrder();
     }
 
     /**
@@ -36,10 +54,11 @@ public class GameScreen extends javax.swing.JFrame {
     private void initComponents() {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        orderTwo = new javax.swing.JPanel();
         orderOne = new javax.swing.JPanel();
+        orderTwo = new javax.swing.JPanel();
         orderThree = new javax.swing.JPanel();
         mainOrder = new javax.swing.JPanel();
+        gameCounter = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
@@ -56,19 +75,6 @@ public class GameScreen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout orderTwoLayout = new javax.swing.GroupLayout(orderTwo);
-        orderTwo.setLayout(orderTwoLayout);
-        orderTwoLayout.setHorizontalGroup(
-            orderTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 200, Short.MAX_VALUE)
-        );
-        orderTwoLayout.setVerticalGroup(
-            orderTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(orderTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 200, 160));
-
         javax.swing.GroupLayout orderOneLayout = new javax.swing.GroupLayout(orderOne);
         orderOne.setLayout(orderOneLayout);
         orderOneLayout.setHorizontalGroup(
@@ -81,6 +87,19 @@ public class GameScreen extends javax.swing.JFrame {
         );
 
         getContentPane().add(orderOne, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 200, 160));
+
+        javax.swing.GroupLayout orderTwoLayout = new javax.swing.GroupLayout(orderTwo);
+        orderTwo.setLayout(orderTwoLayout);
+        orderTwoLayout.setHorizontalGroup(
+            orderTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 200, Short.MAX_VALUE)
+        );
+        orderTwoLayout.setVerticalGroup(
+            orderTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 160, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(orderTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 200, 160));
 
         javax.swing.GroupLayout orderThreeLayout = new javax.swing.GroupLayout(orderThree);
         orderThree.setLayout(orderThreeLayout);
@@ -103,13 +122,19 @@ public class GameScreen extends javax.swing.JFrame {
         );
         mainOrderLayout.setVerticalGroup(
             mainOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 316, Short.MAX_VALUE)
+            .addGap(0, 320, Short.MAX_VALUE)
         );
 
-        getContentPane().add(mainOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 190, 610, -1));
+        getContentPane().add(mainOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 190, 610, 320));
+
+        gameCounter.setFont(new java.awt.Font("Poppins Black", 0, 24)); // NOI18N
+        gameCounter.setForeground(new java.awt.Color(158, 176, 158));
+        gameCounter.setText("00:00");
+        gameCounter.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(gameCounter, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 30, 80, 50));
 
         background.setIcon(new javax.swing.ImageIcon("C:\\Users\\Puta'\\Desktop\\proyecto-ed\\ProyectoEstructuraDeDatos\\Overcooked\\assets\\backgrounds\\GameScreen1.png")); // NOI18N
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 770));
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -156,36 +181,100 @@ public class GameScreen extends javax.swing.JFrame {
         orderTwo.setOpaque(false);
         orderThree.setOpaque(false);
         mainOrder.setOpaque(false);
-        
-        addContentToOrderPanel();
-
     }
 
-    private void addContentToOrderPanel() {
-        // EJEMPLO. Funcion real se adapta para genenrar aleatoramente
-        // las ordenes
-        
-        TinyCheeseMeatBurger cheese = new TinyCheeseMeatBurger();
-        BigCheeseMeatBurger bigCheese = new BigCheeseMeatBurger();
+    private void addContentToOrderPanel(JPanel order, JPanel orderContent) {
+        orderContent.setSize(195, 156);
+        orderContent.setLocation(0, 0);
 
-        cheese.setSize(195, 156);
-        cheese.setLocation(0, 0);
-        bigCheese.setSize(610, 316);
-        bigCheese.setLocation(0, 0);
+        order.removeAll();
+        order.add(orderContent, BorderLayout.CENTER);
+        order.revalidate();
+        order.repaint();
+    }
 
-        orderOne.removeAll();
-        orderOne.add(cheese, BorderLayout.CENTER);
-        orderOne.revalidate();
-        orderOne.repaint();
+    public void gameCounter() {
+
+        gameCounter.setText("5:00");
+
+        Thread hilo = new Thread() {
+            public void run() {
+
+                while (true) {
+                    try {
+                        sleep(1000);
+                        if (segundos == 0) {
+                            segundos = 60;
+                            minutos--;
+                        } else {
+                            segundos--;
+                        }
+                        gameCounter.setText(minutos + ":" + segundos);
+                    } catch (Exception e) {
+                    }
+                }
+            }
+        };
+
+        hilo.start();
+    }
+
+    public void timerNewOrder() {
+        Thread hilo = new Thread() {
+            public void run() {
+                while (true) {
+                    try {
+                        sleep(1000);
+                        if (segundosOrden == 0) {
+                            segundosOrden = 5;
+                            setNuevaOrden();
+                        } else {
+                            segundosOrden--;
+                        }
+
+                    } catch (Exception e) {
+
+                    }
+                }
+            }
+        };
+        hilo.start();
+    }
+
+    public void setNuevaOrden() {
+        for (JPanel order : ordersContainers) {
+            if (orderIsEmpty(order)) {
+                System.out.println(order.toString());
+                JPanel generatedOrder = generarOrden();
+                cola.encola(new NodoCola(new Orden(generatedOrder)));
+                addContentToOrderPanel(order, generatedOrder);
+                break;
+            }
+        }
+    }
+
+    private boolean orderIsEmpty(JPanel orderPanel) {
+        Component[] orderComponents = orderPanel.getComponents();
+        System.out.println(orderComponents.length);
+
+        return orderComponents.length == 0 ? true : false;
+    }
+
+    private JPanel generarOrden() {
+        Random random = new Random();
+        int indice = random.nextInt(orders.length);
         
-        mainOrder.removeAll();
-        mainOrder.add(bigCheese, BorderLayout.CENTER);
-        mainOrder.revalidate();
-        mainOrder.repaint();
+        System.out.println(indice);
+        return orders[indice];
+    }
+
+    public Cola getCola() {
+        return cola;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
+    private javax.swing.JLabel gameCounter;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JPanel mainOrder;
     private javax.swing.JPanel orderOne;
