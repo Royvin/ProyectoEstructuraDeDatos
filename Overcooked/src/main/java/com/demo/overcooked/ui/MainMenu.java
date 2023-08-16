@@ -58,7 +58,8 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_playBtnActionPerformed
 
     private void playBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playBtnMouseClicked
-        System.out.println("com.demo.overcooked.ui.MainMenu.playBtnMouseClicked()");
+        this.setVisible(false);
+        new GameScreen().setVisible(true);
     }//GEN-LAST:event_playBtnMouseClicked
 
     /**
@@ -96,7 +97,7 @@ public class MainMenu extends javax.swing.JFrame {
         });
     }
 
-    public void initMainMenu() {
+    private void initMainMenu() {
         this.setLocationRelativeTo(this);
         this.setTitle("Main menu");
         
