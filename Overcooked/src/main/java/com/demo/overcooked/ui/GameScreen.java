@@ -201,24 +201,19 @@ public class GameScreen extends javax.swing.JFrame {
             }
 
             System.out.println("Order is empty. Content being added");
-            
+
             JPanel order = ui.getRandomOrder();
             cola.encola(new NodoCola(new Orden(order)));
             addContentToOrderPanel(parentPanel, order);
-            
+
             break;
         }
     }
 
     private boolean orderParentPanelIsEmpty(JPanel parentOrderPanel) {
         Component[] orderComponents = parentOrderPanel.getComponents();
-        boolean orderEmpty = orderComponents.length == 0 ? true : false;
-
-        if (orderEmpty) {
-            return true;
-        }
-
-        return false;
+        
+        return  orderComponents.length == 0 ? true : false;
     }
 
     public Cola getCola() {
