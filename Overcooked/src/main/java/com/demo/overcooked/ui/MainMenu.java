@@ -12,7 +12,7 @@ import javax.swing.JLabel;
  */
 public class MainMenu extends javax.swing.JFrame {
 
-    private static final UICommonMethods commonMethods = new UICommonMethods();
+    private static final UIMethods commonMethods = new UIMethods();
 
     public MainMenu() {
         initComponents();

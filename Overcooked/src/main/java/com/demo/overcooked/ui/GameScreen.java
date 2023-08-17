@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.util.Random;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -18,11 +19,12 @@ import javax.swing.JPanel;
 public class GameScreen extends javax.swing.JFrame {
 
     private JPanel[] ordersContainers = new JPanel[3];
-    private JPanel[] orders = new JPanel[3];
+    private UIMethods ui = new UIMethods();
 
     int segundos = 60;
-    int segundosOrden = 5;
     int minutos = 4;
+    int segundosOrden = 2;
+
     Cola cola = new Cola();
 
     /**
@@ -35,12 +37,8 @@ public class GameScreen extends javax.swing.JFrame {
         this.ordersContainers[1] = this.orderTwo;
         this.ordersContainers[2] = this.orderThree;
 
-        this.orders[0] = new TinyCheeseBurger();
-        this.orders[1] = new TinyMeatBurger();
-        this.orders[2] = new TinyCheeseMeatBurger();
-
         initGameScreen();
-        gameCounter();
+        gameTimer();
         timerNewOrder();
     }
 
@@ -183,18 +181,51 @@ public class GameScreen extends javax.swing.JFrame {
         mainOrder.setOpaque(false);
     }
 
-    private void addContentToOrderPanel(JPanel order, JPanel orderContent) {
+    private void addContentToOrderPanel(
+            JPanel orderParentPanel,
+            JPanel orderContent
+    ) {
         orderContent.setSize(195, 156);
         orderContent.setLocation(0, 0);
 
-        order.removeAll();
-        order.add(orderContent, BorderLayout.CENTER);
-        order.revalidate();
-        order.repaint();
+        orderParentPanel.add(orderContent, BorderLayout.CENTER);
+        orderParentPanel.revalidate();
+        orderParentPanel.repaint();
     }
 
-    public void gameCounter() {
+    public void addNewOrder() {
+        for (JPanel parentPanel : ordersContainers) {
+            if (!orderParentPanelIsEmpty(parentPanel)) {
+                System.out.println("Order is not empty. Content cannot be added");
+                continue;
+            }
 
+            System.out.println("Order is empty. Content being added");
+            
+            JPanel order = ui.getRandomOrder();
+            cola.encola(new NodoCola(new Orden(order)));
+            addContentToOrderPanel(parentPanel, order);
+            
+            break;
+        }
+    }
+
+    private boolean orderParentPanelIsEmpty(JPanel parentOrderPanel) {
+        Component[] orderComponents = parentOrderPanel.getComponents();
+        boolean orderEmpty = orderComponents.length == 0 ? true : false;
+
+        if (orderEmpty) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public Cola getCola() {
+        return cola;
+    }
+
+    public void gameTimer() {
         gameCounter.setText("5:00");
 
         Thread hilo = new Thread() {
@@ -226,8 +257,11 @@ public class GameScreen extends javax.swing.JFrame {
                     try {
                         sleep(1000);
                         if (segundosOrden == 0) {
-                            segundosOrden = 5;
-                            setNuevaOrden();
+                            segundosOrden = 2;
+                            SwingUtilities.invokeLater(() -> {
+                                addNewOrder();
+                            });
+
                         } else {
                             segundosOrden--;
                         }
@@ -239,37 +273,6 @@ public class GameScreen extends javax.swing.JFrame {
             }
         };
         hilo.start();
-    }
-
-    public void setNuevaOrden() {
-        for (JPanel order : ordersContainers) {
-            if (orderIsEmpty(order)) {
-                System.out.println(order.toString());
-                JPanel generatedOrder = generarOrden();
-                cola.encola(new NodoCola(new Orden(generatedOrder)));
-                addContentToOrderPanel(order, generatedOrder);
-                break;
-            }
-        }
-    }
-
-    private boolean orderIsEmpty(JPanel orderPanel) {
-        Component[] orderComponents = orderPanel.getComponents();
-        System.out.println(orderComponents.length);
-
-        return orderComponents.length == 0 ? true : false;
-    }
-
-    private JPanel generarOrden() {
-        Random random = new Random();
-        int indice = random.nextInt(orders.length);
-        
-        System.out.println(indice);
-        return orders[indice];
-    }
-
-    public Cola getCola() {
-        return cola;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
