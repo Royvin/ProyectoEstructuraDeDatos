@@ -4,6 +4,8 @@
  */
 package com.demo.overcooked.ui.orders.main;
 
+import com.demo.overcooked.estructuras.ordenes.Cola;
+import com.demo.overcooked.ui.UICommonMethods;
 import com.demo.overcooked.ui.orders.tiny.*;
 
 /**
@@ -12,9 +14,8 @@ import com.demo.overcooked.ui.orders.tiny.*;
  */
 public class BigCheeseMeatBurger extends javax.swing.JPanel {
 
-    /**
-     * Creates new form CheeseBurger
-     */
+    private UICommonMethods ui = new UICommonMethods();
+    
     public BigCheeseMeatBurger() {
         initComponents();
         this.setOpaque(false);
@@ -52,6 +53,7 @@ public class BigCheeseMeatBurger extends javax.swing.JPanel {
 
     private void completeOrderBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completeOrderBtnMouseClicked
         System.out.println("com.demo.overcooked.ui.orders.main.BigCheeseMeatBurger.completeOrderBtnMouseClicked()");
+        ui.completeOrder();
     }//GEN-LAST:event_completeOrderBtnMouseClicked
 
 

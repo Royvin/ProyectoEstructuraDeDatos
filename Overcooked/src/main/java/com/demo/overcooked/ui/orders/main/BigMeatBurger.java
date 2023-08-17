@@ -4,6 +4,7 @@
  */
 package com.demo.overcooked.ui.orders.main;
 
+import com.demo.overcooked.ui.UICommonMethods;
 import com.demo.overcooked.ui.orders.tiny.*;
 
 /**
@@ -12,9 +13,8 @@ import com.demo.overcooked.ui.orders.tiny.*;
  */
 public class BigMeatBurger extends javax.swing.JPanel {
 
-    /**
-     * Creates new form CheeseBurger
-     */
+    private UICommonMethods ui = new UICommonMethods();
+
     public BigMeatBurger() {
         initComponents();
         this.setOpaque(false);
@@ -37,11 +37,22 @@ public class BigMeatBurger extends javax.swing.JPanel {
         background = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        completeOrderBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                completeOrderBtnMouseClicked(evt);
+            }
+        });
         add(completeOrderBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 290, 50));
 
         background.setIcon(new javax.swing.ImageIcon("C:\\Users\\Puta'\\Desktop\\proyecto-ed\\ProyectoEstructuraDeDatos\\Overcooked\\assets\\orders\\big-meat.png")); // NOI18N
         add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void completeOrderBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completeOrderBtnMouseClicked
+        System.out.println("com.demo.overcooked.ui.orders.main.BigMeatBurger.completeOrderBtnMouseClicked()");
+        ui.completeOrder();
+    }//GEN-LAST:event_completeOrderBtnMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
