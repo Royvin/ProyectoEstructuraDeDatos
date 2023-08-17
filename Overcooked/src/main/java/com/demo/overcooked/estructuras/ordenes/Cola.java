@@ -11,36 +11,34 @@ import javax.swing.JPanel;
  * @author Royvin Arrieta M.
  */
 public class Cola {
+    
+    private static Cola instance;
     private NodoCola frente;
     private NodoCola ultimo;
     private int largo;
-    
-    
-    public Cola() {
+
+    private Cola() {
         this.frente = null;
         this.ultimo = null;
         this.largo = 0;
     }
-    
-    public void encola(NodoCola nuevoNodo){
-        if(frente == null){
+
+    public void encola(NodoCola nuevoNodo) {
+        if (frente == null) {
             frente = nuevoNodo;
-            ultimo = nuevoNodo;                    
-        } else{
+            ultimo = nuevoNodo;
+        } else {
             ultimo.setAtras(nuevoNodo);
-            ultimo=nuevoNodo;
+            ultimo = nuevoNodo;
         }
         largo++;
     }
-    
-    public NodoCola atiende(){
-        NodoCola aux = frente;
-        if(frente!=null){
-            frente=frente.getAtras();
-            aux.setAtras(null);
+
+    public void desencola() {
+        if (frente != null) {
+            frente = frente.getAtras();
             largo--;
         }
-        return aux;
     }
 
     public JPanel getFrente() {
@@ -50,16 +48,21 @@ public class Cola {
     public JPanel getUltimo() {
         return ultimo.getDato().getOrden();
     }
+
+    public static Cola getInstance() {
+         if (instance == null) {
+            instance = new Cola();
+        }
+        return instance;
+    }
     
-    public String imprimir(){
-        String mensaje="";
-        NodoCola aux=frente;
-        while(aux!=null){
-            mensaje+=aux.getDato().getOrden()+ "\n";
-            aux=aux.getAtras();
+    public String imprimir() {
+        String mensaje = "";
+        NodoCola aux = frente;
+        while (aux != null) {
+            mensaje += aux.getDato().getOrden() + "\n";
+            aux = aux.getAtras();
         }
         return mensaje;
     }
-
-    
 }

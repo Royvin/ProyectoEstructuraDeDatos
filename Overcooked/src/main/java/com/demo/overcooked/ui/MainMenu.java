@@ -12,12 +12,9 @@ import javax.swing.JLabel;
  */
 public class MainMenu extends javax.swing.JFrame {
 
-    private static final UIMethods commonMethods = new UIMethods();
-
     public MainMenu() {
         initComponents();
         initMainMenu();
-
     }
 
     /**
@@ -59,7 +56,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void playBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playBtnMouseClicked
         this.setVisible(false);
-        new GameScreen().setVisible(true);
+        new GameScreen();
     }//GEN-LAST:event_playBtnMouseClicked
 
     /**
