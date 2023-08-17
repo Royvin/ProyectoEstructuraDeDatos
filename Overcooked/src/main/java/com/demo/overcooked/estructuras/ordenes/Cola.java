@@ -4,6 +4,8 @@
  */
 package com.demo.overcooked.estructuras.ordenes;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author Royvin Arrieta M.
@@ -39,6 +41,14 @@ public class Cola {
             largo--;
         }
         return aux;
+    }
+
+    public JPanel getFrente() {
+        return frente.getDato().getOrden();
+    }
+
+    public JPanel getUltimo() {
+        return ultimo.getDato().getOrden();
     }
     
     public String imprimir(){

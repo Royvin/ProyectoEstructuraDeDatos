@@ -55,7 +55,7 @@ public class GameScreen extends javax.swing.JFrame {
         orderOne = new javax.swing.JPanel();
         orderTwo = new javax.swing.JPanel();
         orderThree = new javax.swing.JPanel();
-        mainOrder = new javax.swing.JPanel();
+        mainOrderPanel = new javax.swing.JPanel();
         gameCounter = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
@@ -112,18 +112,18 @@ public class GameScreen extends javax.swing.JFrame {
 
         getContentPane().add(orderThree, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, 200, 160));
 
-        javax.swing.GroupLayout mainOrderLayout = new javax.swing.GroupLayout(mainOrder);
-        mainOrder.setLayout(mainOrderLayout);
-        mainOrderLayout.setHorizontalGroup(
-            mainOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout mainOrderPanelLayout = new javax.swing.GroupLayout(mainOrderPanel);
+        mainOrderPanel.setLayout(mainOrderPanelLayout);
+        mainOrderPanelLayout.setHorizontalGroup(
+            mainOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 610, Short.MAX_VALUE)
         );
-        mainOrderLayout.setVerticalGroup(
-            mainOrderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        mainOrderPanelLayout.setVerticalGroup(
+            mainOrderPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 320, Short.MAX_VALUE)
         );
 
-        getContentPane().add(mainOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 190, 610, 320));
+        getContentPane().add(mainOrderPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 190, 610, 320));
 
         gameCounter.setFont(new java.awt.Font("Poppins Black", 0, 24)); // NOI18N
         gameCounter.setForeground(new java.awt.Color(158, 176, 158));
@@ -178,7 +178,7 @@ public class GameScreen extends javax.swing.JFrame {
         orderOne.setOpaque(false);
         orderTwo.setOpaque(false);
         orderThree.setOpaque(false);
-        mainOrder.setOpaque(false);
+        mainOrderPanel.setOpaque(false);
     }
 
     private void addContentToOrderPanel(
@@ -192,11 +192,22 @@ public class GameScreen extends javax.swing.JFrame {
         orderParentPanel.revalidate();
         orderParentPanel.repaint();
     }
+    
+    private void addContentToMainOrderPanel(){
+        String currentOrderName = cola.getFrente().getName();
+        JPanel mainOrder = ui.getMainOrderPanel(currentOrderName);
+        
+        mainOrder.setSize(610, 320);
+        mainOrder.setLocation(0, 0);
+
+        mainOrderPanel.add(mainOrder, BorderLayout.CENTER);
+        mainOrderPanel.revalidate();
+        mainOrderPanel.repaint();
+    }
 
     public void addNewOrder() {
         for (JPanel parentPanel : ordersContainers) {
             if (!orderParentPanelIsEmpty(parentPanel)) {
-                System.out.println("Order is not empty. Content cannot be added");
                 continue;
             }
 
@@ -204,7 +215,9 @@ public class GameScreen extends javax.swing.JFrame {
 
             JPanel order = ui.getRandomOrder();
             cola.encola(new NodoCola(new Orden(order)));
+            
             addContentToOrderPanel(parentPanel, order);
+            addContentToMainOrderPanel();
 
             break;
         }
@@ -212,8 +225,8 @@ public class GameScreen extends javax.swing.JFrame {
 
     private boolean orderParentPanelIsEmpty(JPanel parentOrderPanel) {
         Component[] orderComponents = parentOrderPanel.getComponents();
-        
-        return  orderComponents.length == 0 ? true : false;
+
+        return orderComponents.length == 0 ? true : false;
     }
 
     public Cola getCola() {
@@ -274,7 +287,7 @@ public class GameScreen extends javax.swing.JFrame {
     private javax.swing.JLabel background;
     private javax.swing.JLabel gameCounter;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JPanel mainOrder;
+    private javax.swing.JPanel mainOrderPanel;
     private javax.swing.JPanel orderOne;
     private javax.swing.JPanel orderThree;
     private javax.swing.JPanel orderTwo;
