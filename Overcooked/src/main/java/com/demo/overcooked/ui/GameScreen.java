@@ -86,10 +86,6 @@ public class GameScreen {
         return orderComponents.length == 0 ? true : false;
     }
 
-    public Cola getCola() {
-        return colaOrdenes;
-    }
-
     public void gameTimer() {
         gameTimerLabel.setText("5:00");
 
