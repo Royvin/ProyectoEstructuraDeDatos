@@ -8,7 +8,12 @@ import com.demo.overcooked.estructuras.ordenes.*;
 import com.demo.overcooked.ui.orders.tiny.*;
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Random;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -18,11 +23,16 @@ import javax.swing.SwingUtilities;
  * @author Puta'
  */
 public class GameScreenUI extends javax.swing.JFrame {
- 
-    public GameScreenUI() {
+
+    private static GameScreenUI instance;
+
+    private GameScreenUI() {
         initComponents();
         this.setLocationRelativeTo(this);
+        ImageIcon image = new ImageIcon("assets/backgrounds/GameScreen1.png");
+        background.setIcon(image);
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -112,8 +122,6 @@ public class GameScreenUI extends javax.swing.JFrame {
         gameTimerLabel.setText("00:00");
         gameTimerLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(gameTimerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 30, 80, 50));
-
-        background.setIcon(new javax.swing.ImageIcon("C:\\Users\\Puta'\\Desktop\\proyecto-ed\\ProyectoEstructuraDeDatos\\Overcooked\\assets\\backgrounds\\GameScreen1.png")); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 760));
 
         pack();
@@ -173,6 +181,13 @@ public class GameScreenUI extends javax.swing.JFrame {
 
     public JPanel getOrderTwoPanel() {
         return orderTwoPanel;
+    }
+
+    public static GameScreenUI getInstance() {
+        if (instance == null) {
+            instance = new GameScreenUI();
+        }
+        return instance;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

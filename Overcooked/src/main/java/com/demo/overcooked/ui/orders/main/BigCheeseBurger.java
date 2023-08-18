@@ -1,27 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package com.demo.overcooked.ui.orders.main;
 
-import com.demo.overcooked.ui.UICommonMethods;
-import com.demo.overcooked.ui.orders.tiny.*;
+import com.demo.overcooked.ui.GameScreen;
+import javax.swing.ImageIcon;
 
-/**
- *
- * @author Puta'
- */
 public class BigCheeseBurger extends javax.swing.JPanel {
 
-    private UICommonMethods ui = new UICommonMethods();
+    GameScreen gameScreen;
     
-    public BigCheeseBurger() {
+    public BigCheeseBurger(GameScreen gameScreen) {
         initComponents();
+        this.gameScreen = gameScreen;
+        
         this.setOpaque(false);
 
         completeOrderBtn.setOpaque(false);
         completeOrderBtn.setContentAreaFilled(false);
         completeOrderBtn.setBorderPainted(false);
+        
+        ImageIcon image = new ImageIcon("assets/orders/big-cheese.png");
+        background.setIcon(image);
     }
 
     /**
@@ -44,14 +41,12 @@ public class BigCheeseBurger extends javax.swing.JPanel {
             }
         });
         add(completeOrderBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 290, 50));
-
-        background.setIcon(new javax.swing.ImageIcon("C:\\Users\\Puta'\\Desktop\\proyecto-ed\\ProyectoEstructuraDeDatos\\Overcooked\\assets\\orders\\big-cheese.png")); // NOI18N
         add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void completeOrderBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completeOrderBtnMouseClicked
         System.out.println("com.demo.overcooked.ui.orders.main.BigCheeseBurger.completeOrderBtnMouseClicked()");
-        ui.completeOrder();
+        gameScreen.completeOrder();
     }//GEN-LAST:event_completeOrderBtnMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

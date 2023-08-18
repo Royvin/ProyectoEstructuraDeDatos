@@ -27,11 +27,6 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JLabel" name="background">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Puta&apos;\Desktop\proyecto-ed\ProyectoEstructuraDeDatos\Overcooked\assets\orders\meat-cheese.png"/>
-        </Property>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>

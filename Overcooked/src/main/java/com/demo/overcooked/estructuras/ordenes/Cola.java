@@ -40,9 +40,13 @@ public class Cola {
             largo--;
         }
     }
+    
+    public NodoCola getNodoFrente(){
+        return frente != null ? frente : null;
+    }
 
     public JPanel getFrente() {
-        return frente.getDato().getOrden();
+        return frente != null ? frente.getDato().getOrden() : null;
     }
 
     public JPanel getUltimo() {
