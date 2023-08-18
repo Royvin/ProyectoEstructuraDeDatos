@@ -4,6 +4,7 @@
 
 package com.demo.overcooked;
 
+import com.demo.overcooked.ui.MainMenu;
 import java.util.Random;
 
 /**
@@ -13,18 +14,6 @@ import java.util.Random;
 public class Overcooked {
 
     public static void main(String[] args) {
-        Cola cola = new Cola();
-        PantallaInicio inicio = new PantallaInicio();
-        inicio.setVisible(true);     
-    }
-    
-    public static String generarOrden(){
-        String [] ordenes = {"Hamburguesa \nde carne(\npan,\ncarne)", 
-                            "Hamburguesa \ncon queso (\npan, \ncarne, \nqueso)", 
-                            "Hamburguesa\n clásica (\npan, \ncarne, \nlechuga, \nqueso)"};
-        
-        Random random = new Random();
-        int indice = random.nextInt(ordenes.length);
-        return ordenes[indice];
+     new MainMenu().setVisible(true);
     }
 }
