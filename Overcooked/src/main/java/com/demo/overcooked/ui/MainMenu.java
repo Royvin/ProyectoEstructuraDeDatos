@@ -5,7 +5,6 @@
 package com.demo.overcooked.ui;
 
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 /**
  *
@@ -47,9 +46,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
         getContentPane().add(playBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, 280, 110));
-
-        backgroundLbl.setIcon(new javax.swing.ImageIcon("C:\\Users\\Puta'\\Desktop\\proyecto-ed\\ProyectoEstructuraDeDatos\\Overcooked\\assets\\backgrounds\\MainMenu.png")); // NOI18N
-        getContentPane().add(backgroundLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(backgroundLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
