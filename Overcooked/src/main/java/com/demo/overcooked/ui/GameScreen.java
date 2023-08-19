@@ -94,7 +94,7 @@ public class GameScreen {
         }
     }
 
-    public JPanel getRandomOrder() {
+    private JPanel getRandomOrder() {
         JPanel[] orders = {
             new TinyCheeseBurger(),
             new TinyMeatBurger(),
@@ -120,7 +120,7 @@ public class GameScreen {
         return new BigMeatBurger(this);
     }
 
-    public void refreshMainOrderPanelContent() {
+    private void refreshMainOrderPanelContent() {
         String currentOrderName = Cola.getInstance().getFrente().getName();
         JPanel mainOrder = getMainOrderPanel(currentOrderName);
 
@@ -148,7 +148,7 @@ public class GameScreen {
         orderParentPanel.repaint();
     }
 
-    public void addNewOrder() {
+    private void addNewOrder() {
         for (JPanel parentPanel : ordersContainers) {
             if (!orderParentPanelIsEmpty(parentPanel)) {
                 continue;
@@ -172,7 +172,7 @@ public class GameScreen {
         return orderComponents.length == 0 ? true : false;
     }
 
-    public void gameTimer() {
+    private void gameTimer() {
         gameTimerLabel.setText("5:00");
 
         Thread hilo = new Thread() {
@@ -197,7 +197,7 @@ public class GameScreen {
         hilo.start();
     }
 
-    public void timerNewOrder() {
+    private void timerNewOrder() {
         Thread hilo = new Thread() {
             public void run() {
                 while (true) {
@@ -222,7 +222,7 @@ public class GameScreen {
         hilo.start();
     }
     
-    public void pointsSystem(){
+    private void pointsSystem(){
         String currentOrderName = Cola.getInstance().getFrente().getName();
         gamePointsLabel.setText("0pts");
         if (currentOrderName == constants.MEAT_AND_CHEESE_BURGER()) {
