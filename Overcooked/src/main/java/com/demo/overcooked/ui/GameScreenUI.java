@@ -4,19 +4,10 @@
  */
 package com.demo.overcooked.ui;
 
-import com.demo.overcooked.estructuras.ordenes.*;
-import com.demo.overcooked.ui.orders.tiny.*;
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Random;
-import javax.imageio.ImageIO;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 /**
  *
@@ -129,7 +120,9 @@ public class GameScreenUI extends javax.swing.JFrame {
         gamePointsLabel.setText("0pts");
         gamePointsLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(gamePointsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, 80, 50));
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 770));
+
+        background.setIcon(new javax.swing.ImageIcon("C:\\Users\\Puta'\\Desktop\\estructura-datos\\proyecto\\ProyectoEstructuraDeDatos\\Overcooked\\assets\\backgrounds\\GameScreen.png")); // NOI18N
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
