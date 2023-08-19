@@ -4,21 +4,32 @@
  */
 package com.demo.overcooked.ui;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 
 /**
  *
  * @author Puta'
  */
 public class MainMenu extends javax.swing.JFrame {
-
+    File file = new File("assets/Sounds/SoundtrackMenu.wav");
+    static Clip introWAV;
     public MainMenu() {
         initComponents();
         initMainMenu();
         
         ImageIcon image = new ImageIcon("assets/backgrounds/MainMenu.png");
         backgroundLbl.setIcon(image);
+        reproducir(file);
+
     }
 
     /**
@@ -61,6 +72,9 @@ public class MainMenu extends javax.swing.JFrame {
     private void playBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playBtnMouseClicked
         this.setVisible(false);
         new GameScreen();
+        AudioPlayer.player.stop();
+        introWAV.stop();
+
     }//GEN-LAST:event_playBtnMouseClicked
 
     /**
@@ -106,6 +120,22 @@ public class MainMenu extends javax.swing.JFrame {
         playBtn.setContentAreaFilled(false);
         playBtn.setBorderPainted(false);
     }
+    public static void SetIntroWAV(Clip clip){
+
+    introWAV=clip;
+}
+    public static void reproducir(File file) {
+    try {
+        Clip sound = AudioSystem.getClip();
+        sound.open(AudioSystem.getAudioInputStream(file));
+        SetIntroWAV(sound);
+        sound.start();
+
+    } catch (Exception e) {
+        System.out.println(e);
+    }
+}
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backgroundLbl;

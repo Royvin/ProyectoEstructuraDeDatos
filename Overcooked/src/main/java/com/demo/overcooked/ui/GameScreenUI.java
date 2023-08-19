@@ -9,6 +9,7 @@ import com.demo.overcooked.ui.orders.tiny.*;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Random;
@@ -17,6 +18,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 
 /**
  *
@@ -31,6 +34,8 @@ public class GameScreenUI extends javax.swing.JFrame {
         this.setLocationRelativeTo(this);
         ImageIcon image = new ImageIcon("assets/backgrounds/GameScreen1.png");
         background.setIcon(image);
+        reproducir();
+        
     }
     
 
@@ -137,7 +142,9 @@ public class GameScreenUI extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]){
+        
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -199,6 +206,18 @@ public class GameScreenUI extends javax.swing.JFrame {
             instance = new GameScreenUI();
         }
         return instance;
+    }
+    
+    public void reproducir(){
+        try{
+            String sonido = "assets/Sounds/SoundtrackInGame.wav";
+            InputStream in = new FileInputStream(sonido);
+            AudioStream audio = new AudioStream(in);
+            AudioPlayer.player.start(audio);
+        }catch(IOException ioe){
+            System.out.println("Exception caught" + ioe.getMessage());
+        }
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
