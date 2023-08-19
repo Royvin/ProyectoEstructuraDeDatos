@@ -1,29 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package com.demo.overcooked.ui.orders.main;
 
-import com.demo.overcooked.estructuras.ordenes.Cola;
-import com.demo.overcooked.ui.UICommonMethods;
-import com.demo.overcooked.ui.orders.tiny.*;
+import com.demo.overcooked.ui.GameScreen;
+import javax.swing.ImageIcon;
 
-/**
- *
- * @author Puta'
- */
 public class BigCheeseMeatBurger extends javax.swing.JPanel {
 
-    private UICommonMethods ui = new UICommonMethods();
+    GameScreen gameScreen;
     
-    public BigCheeseMeatBurger() {
+    public BigCheeseMeatBurger(GameScreen gameScreen) {
         initComponents();
+        this.gameScreen = gameScreen;
         this.setOpaque(false);
         
                 
         completeOrderBtn.setOpaque(false);
         completeOrderBtn.setContentAreaFilled(false);
         completeOrderBtn.setBorderPainted(false);
+        
+        ImageIcon image = new ImageIcon("assets/orders/big-meat-cheese.png");
+        background.setIcon(image);
     }
 
     /**
@@ -53,7 +48,7 @@ public class BigCheeseMeatBurger extends javax.swing.JPanel {
 
     private void completeOrderBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completeOrderBtnMouseClicked
         System.out.println("com.demo.overcooked.ui.orders.main.BigCheeseMeatBurger.completeOrderBtnMouseClicked()");
-        ui.completeOrder();
+        gameScreen.completeOrder();
     }//GEN-LAST:event_completeOrderBtnMouseClicked
 
 

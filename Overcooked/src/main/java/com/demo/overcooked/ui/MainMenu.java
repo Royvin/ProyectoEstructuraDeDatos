@@ -4,6 +4,7 @@
  */
 package com.demo.overcooked.ui;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 /**
@@ -15,6 +16,9 @@ public class MainMenu extends javax.swing.JFrame {
     public MainMenu() {
         initComponents();
         initMainMenu();
+        
+        ImageIcon image = new ImageIcon("assets/backgrounds/MainMenu.png");
+        backgroundLbl.setIcon(image);
     }
 
     /**

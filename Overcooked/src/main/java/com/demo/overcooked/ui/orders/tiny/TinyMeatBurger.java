@@ -4,6 +4,8 @@
  */
 package com.demo.overcooked.ui.orders.tiny;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Puta'
@@ -16,6 +18,9 @@ public class TinyMeatBurger extends javax.swing.JPanel {
     public TinyMeatBurger() {
         initComponents();
         this.setOpaque(false);
+        
+        ImageIcon image = new ImageIcon("assets/orders/meat.png");
+        background.setIcon(image);
     }
 
     /**
@@ -28,8 +33,6 @@ public class TinyMeatBurger extends javax.swing.JPanel {
     private void initComponents() {
 
         background = new javax.swing.JLabel();
-
-        background.setIcon(new javax.swing.ImageIcon("C:\\Users\\Puta'\\Desktop\\proyecto-ed\\ProyectoEstructuraDeDatos\\Overcooked\\assets\\orders\\meat.png")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
