@@ -31,12 +31,19 @@ public class GameScreen {
     private JPanel[] ordersContainers = new JPanel[3];
 
     private JLabel gameTimerLabel;
+    private JLabel gamePointsLabel;
 
     private Cola colaOrdenes;
 
     int segundos = 60;
     int minutos = 4;
     int segundosOrden = 2;
+    
+    int meatBurgerPoints = 5;
+    int cheeseBurgerPoints = 10;
+    int ClassicBurguerPoints = 15;
+    int totalPoints = 0;
+    
 
     public GameScreen() {
         this.colaOrdenes = Cola.getInstance();
@@ -48,6 +55,7 @@ public class GameScreen {
         this.mainOrderContainerPanel = screen.getMainOrderPanel();
 
         this.gameTimerLabel = screen.getTimerLabel();
+        this.gamePointsLabel = screen.getPointsLabel();
 
         this.ordersContainers[0] = this.orderOneContainerPanel;
         this.ordersContainers[1] = this.orderTwoContainerPanel;
@@ -64,6 +72,7 @@ public class GameScreen {
     }
 
     public void completeOrder() {
+        pointsSystem();
         colaOrdenes.desencola();
 
         for (int i = 0; i < ordersContainers.length; i++) {
@@ -79,6 +88,9 @@ public class GameScreen {
 
                 refreshMainOrderPanelContent();
             }
+            
+            
+            
         }
     }
 
@@ -209,6 +221,20 @@ public class GameScreen {
         };
         hilo.start();
     }
+    
+    public void pointsSystem(){
+        String currentOrderName = Cola.getInstance().getFrente().getName();
+        gamePointsLabel.setText("0pts");
+        if (currentOrderName == constants.MEAT_AND_CHEESE_BURGER()) {
+            totalPoints+=ClassicBurguerPoints;
+        } else if (currentOrderName == constants.CHEESE_BURGER()) {
+            totalPoints+=cheeseBurgerPoints;
+        } else if(currentOrderName == constants.MEAT_BURGER()){
+            totalPoints+=meatBurgerPoints;
+        }
+        gamePointsLabel.setText(totalPoints+"pts");
+    }
+    
 
     private void initGameScreen() {
         for (JPanel ordersContainer : ordersContainers) {

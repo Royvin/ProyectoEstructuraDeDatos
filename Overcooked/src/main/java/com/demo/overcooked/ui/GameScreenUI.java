@@ -49,6 +49,7 @@ public class GameScreenUI extends javax.swing.JFrame {
         orderThreePanel = new javax.swing.JPanel();
         mainOrderPanel = new javax.swing.JPanel();
         gameTimerLabel = new javax.swing.JLabel();
+        gamePointsLabel = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
@@ -122,7 +123,13 @@ public class GameScreenUI extends javax.swing.JFrame {
         gameTimerLabel.setText("00:00");
         gameTimerLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(gameTimerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 30, 80, 50));
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 760));
+
+        gamePointsLabel.setFont(new java.awt.Font("Poppins Black", 0, 24)); // NOI18N
+        gamePointsLabel.setForeground(new java.awt.Color(158, 176, 158));
+        gamePointsLabel.setText("0pts");
+        gamePointsLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(gamePointsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, 80, 50));
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -166,6 +173,10 @@ public class GameScreenUI extends javax.swing.JFrame {
     public JLabel getTimerLabel() {
         return gameTimerLabel;
     }
+    
+    public JLabel getPointsLabel() {
+        return gamePointsLabel;
+    }
 
     public JPanel getMainOrderPanel() {
         return mainOrderPanel;
@@ -192,6 +203,7 @@ public class GameScreenUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
+    private javax.swing.JLabel gamePointsLabel;
     private javax.swing.JLabel gameTimerLabel;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JPanel mainOrderPanel;
