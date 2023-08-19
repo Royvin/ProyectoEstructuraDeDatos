@@ -49,11 +49,11 @@ public class GameScreenUI extends javax.swing.JFrame {
         orderThreePanel = new javax.swing.JPanel();
         mainOrderPanel = new javax.swing.JPanel();
         gameTimerLabel = new javax.swing.JLabel();
-        cintaIngrediente05 = new javax.swing.JPanel();
-        cintaIngrediente04 = new javax.swing.JPanel();
-        cintaIngrediente03 = new javax.swing.JPanel();
-        cintaIngrediente02 = new javax.swing.JPanel();
-        cintaIngrediente01 = new javax.swing.JPanel();
+        cintaIngredientFive = new javax.swing.JPanel();
+        cintaIngredientFour = new javax.swing.JPanel();
+        cintaIngredientThree = new javax.swing.JPanel();
+        cintaIngredientTwo = new javax.swing.JPanel();
+        cintaIngredientOne = new javax.swing.JPanel();
         background = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
@@ -128,70 +128,70 @@ public class GameScreenUI extends javax.swing.JFrame {
         gameTimerLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         getContentPane().add(gameTimerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 30, 80, 50));
 
-        javax.swing.GroupLayout cintaIngrediente05Layout = new javax.swing.GroupLayout(cintaIngrediente05);
-        cintaIngrediente05.setLayout(cintaIngrediente05Layout);
-        cintaIngrediente05Layout.setHorizontalGroup(
-            cintaIngrediente05Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout cintaIngredientFiveLayout = new javax.swing.GroupLayout(cintaIngredientFive);
+        cintaIngredientFive.setLayout(cintaIngredientFiveLayout);
+        cintaIngredientFiveLayout.setHorizontalGroup(
+            cintaIngredientFiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 170, Short.MAX_VALUE)
         );
-        cintaIngrediente05Layout.setVerticalGroup(
-            cintaIngrediente05Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 200, Short.MAX_VALUE)
+        cintaIngredientFiveLayout.setVerticalGroup(
+            cintaIngredientFiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
         );
 
-        getContentPane().add(cintaIngrediente05, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 530, -1, 200));
+        getContentPane().add(cintaIngredientFive, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 530, -1, 120));
 
-        javax.swing.GroupLayout cintaIngrediente04Layout = new javax.swing.GroupLayout(cintaIngrediente04);
-        cintaIngrediente04.setLayout(cintaIngrediente04Layout);
-        cintaIngrediente04Layout.setHorizontalGroup(
-            cintaIngrediente04Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout cintaIngredientFourLayout = new javax.swing.GroupLayout(cintaIngredientFour);
+        cintaIngredientFour.setLayout(cintaIngredientFourLayout);
+        cintaIngredientFourLayout.setHorizontalGroup(
+            cintaIngredientFourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 170, Short.MAX_VALUE)
         );
-        cintaIngrediente04Layout.setVerticalGroup(
-            cintaIngrediente04Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 200, Short.MAX_VALUE)
+        cintaIngredientFourLayout.setVerticalGroup(
+            cintaIngredientFourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
         );
 
-        getContentPane().add(cintaIngrediente04, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 530, 170, 200));
+        getContentPane().add(cintaIngredientFour, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 530, 170, 120));
 
-        javax.swing.GroupLayout cintaIngrediente03Layout = new javax.swing.GroupLayout(cintaIngrediente03);
-        cintaIngrediente03.setLayout(cintaIngrediente03Layout);
-        cintaIngrediente03Layout.setHorizontalGroup(
-            cintaIngrediente03Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout cintaIngredientThreeLayout = new javax.swing.GroupLayout(cintaIngredientThree);
+        cintaIngredientThree.setLayout(cintaIngredientThreeLayout);
+        cintaIngredientThreeLayout.setHorizontalGroup(
+            cintaIngredientThreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 170, Short.MAX_VALUE)
         );
-        cintaIngrediente03Layout.setVerticalGroup(
-            cintaIngrediente03Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 200, Short.MAX_VALUE)
+        cintaIngredientThreeLayout.setVerticalGroup(
+            cintaIngredientThreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
         );
 
-        getContentPane().add(cintaIngrediente03, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 530, 170, 200));
+        getContentPane().add(cintaIngredientThree, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 530, 170, 120));
 
-        javax.swing.GroupLayout cintaIngrediente02Layout = new javax.swing.GroupLayout(cintaIngrediente02);
-        cintaIngrediente02.setLayout(cintaIngrediente02Layout);
-        cintaIngrediente02Layout.setHorizontalGroup(
-            cintaIngrediente02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout cintaIngredientTwoLayout = new javax.swing.GroupLayout(cintaIngredientTwo);
+        cintaIngredientTwo.setLayout(cintaIngredientTwoLayout);
+        cintaIngredientTwoLayout.setHorizontalGroup(
+            cintaIngredientTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 160, Short.MAX_VALUE)
         );
-        cintaIngrediente02Layout.setVerticalGroup(
-            cintaIngrediente02Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 200, Short.MAX_VALUE)
+        cintaIngredientTwoLayout.setVerticalGroup(
+            cintaIngredientTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
         );
 
-        getContentPane().add(cintaIngrediente02, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 530, 160, 200));
+        getContentPane().add(cintaIngredientTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 530, 160, 120));
 
-        javax.swing.GroupLayout cintaIngrediente01Layout = new javax.swing.GroupLayout(cintaIngrediente01);
-        cintaIngrediente01.setLayout(cintaIngrediente01Layout);
-        cintaIngrediente01Layout.setHorizontalGroup(
-            cintaIngrediente01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout cintaIngredientOneLayout = new javax.swing.GroupLayout(cintaIngredientOne);
+        cintaIngredientOne.setLayout(cintaIngredientOneLayout);
+        cintaIngredientOneLayout.setHorizontalGroup(
+            cintaIngredientOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 160, Short.MAX_VALUE)
         );
-        cintaIngrediente01Layout.setVerticalGroup(
-            cintaIngrediente01Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 200, Short.MAX_VALUE)
+        cintaIngredientOneLayout.setVerticalGroup(
+            cintaIngredientOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
         );
 
-        getContentPane().add(cintaIngrediente01, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 530, 160, 200));
+        getContentPane().add(cintaIngredientOne, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 530, 160, 120));
 
         background.setIcon(new javax.swing.ImageIcon("C:\\Users\\Puta'\\Desktop\\proyecto-ed\\ProyectoEstructuraDeDatos\\Overcooked\\assets\\backgrounds\\GameScreen.png")); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 760));
@@ -255,6 +255,28 @@ public class GameScreenUI extends javax.swing.JFrame {
         return orderTwoPanel;
     }
 
+    public JPanel getCintaIngredientFive() {
+        return cintaIngredientFive;
+    }
+
+    public JPanel getCintaIngredientFour() {
+        return cintaIngredientFour;
+    }
+
+    public JPanel getCintaIngredientOne() {
+        return cintaIngredientOne;
+    }
+
+    public JPanel getCintaIngredientThree() {
+        return cintaIngredientThree;
+    }
+
+    public JPanel getCintaIngredientTwo() {
+        return cintaIngredientTwo;
+    }
+    
+    
+
     public static GameScreenUI getInstance() {
         if (instance == null) {
             instance = new GameScreenUI();
@@ -264,11 +286,11 @@ public class GameScreenUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
-    private javax.swing.JPanel cintaIngrediente01;
-    private javax.swing.JPanel cintaIngrediente02;
-    private javax.swing.JPanel cintaIngrediente03;
-    private javax.swing.JPanel cintaIngrediente04;
-    private javax.swing.JPanel cintaIngrediente05;
+    private javax.swing.JPanel cintaIngredientFive;
+    private javax.swing.JPanel cintaIngredientFour;
+    private javax.swing.JPanel cintaIngredientOne;
+    private javax.swing.JPanel cintaIngredientThree;
+    private javax.swing.JPanel cintaIngredientTwo;
     private javax.swing.JLabel gameTimerLabel;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JPanel mainOrderPanel;

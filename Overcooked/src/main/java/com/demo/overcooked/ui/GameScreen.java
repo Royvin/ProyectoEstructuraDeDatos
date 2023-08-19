@@ -23,12 +23,19 @@ public class GameScreen {
 
     private Constants constants = new Constants();
 
+    private JPanel[] ordersContainers = new JPanel[3];
+    private JPanel[] ingredientsContainers = new JPanel[5];
+
     private JPanel orderOneContainerPanel;
     private JPanel orderTwoContainerPanel;
     private JPanel orderThreeContainerPanel;
     private JPanel mainOrderContainerPanel;
 
-    private JPanel[] ordersContainers = new JPanel[3];
+    private JPanel cintaIngredientOnePanel;
+    private JPanel cintaIngredientTwoPanel;
+    private JPanel cintaIngredientThreePanel;
+    private JPanel cintaIngredientFourPanel;
+    private JPanel cintaIngredientFivePanel;
 
     private JLabel gameTimerLabel;
 
@@ -42,16 +49,8 @@ public class GameScreen {
         this.colaOrdenes = Cola.getInstance();
         this.screen = GameScreenUI.getInstance();
 
-        this.orderOneContainerPanel = screen.getOrderOnePanel();
-        this.orderTwoContainerPanel = screen.getOrderTwoPanel();
-        this.orderThreeContainerPanel = screen.getOrderThreePanel();
-        this.mainOrderContainerPanel = screen.getMainOrderPanel();
-
-        this.gameTimerLabel = screen.getTimerLabel();
-
-        this.ordersContainers[0] = this.orderOneContainerPanel;
-        this.ordersContainers[1] = this.orderTwoContainerPanel;
-        this.ordersContainers[2] = this.orderThreeContainerPanel;
+        this.getScreenVariables();
+        this.populateArrays();
 
         initGameScreen();
         initGame();
@@ -82,7 +81,7 @@ public class GameScreen {
         }
     }
 
-    public JPanel getRandomOrder() {
+    private JPanel getRandomOrder() {
         JPanel[] orders = {
             new TinyCheeseBurger(),
             new TinyMeatBurger(),
@@ -108,7 +107,7 @@ public class GameScreen {
         return new BigMeatBurger(this);
     }
 
-    public void refreshMainOrderPanelContent() {
+    private void refreshMainOrderPanelContent() {
         String currentOrderName = Cola.getInstance().getFrente().getName();
         JPanel mainOrder = getMainOrderPanel(currentOrderName);
 
@@ -136,7 +135,7 @@ public class GameScreen {
         orderParentPanel.repaint();
     }
 
-    public void addNewOrder() {
+    private void addNewOrder() {
         for (JPanel parentPanel : ordersContainers) {
             if (!orderParentPanelIsEmpty(parentPanel)) {
                 continue;
@@ -160,7 +159,7 @@ public class GameScreen {
         return orderComponents.length == 0 ? true : false;
     }
 
-    public void gameTimer() {
+    private void gameTimer() {
         gameTimerLabel.setText("5:00");
 
         Thread hilo = new Thread() {
@@ -185,7 +184,7 @@ public class GameScreen {
         hilo.start();
     }
 
-    public void timerNewOrder() {
+    private void timerNewOrder() {
         Thread hilo = new Thread() {
             public void run() {
                 while (true) {
@@ -210,10 +209,42 @@ public class GameScreen {
         hilo.start();
     }
 
+    private void getScreenVariables() {
+        this.orderOneContainerPanel = screen.getOrderOnePanel();
+        this.orderTwoContainerPanel = screen.getOrderTwoPanel();
+        this.orderThreeContainerPanel = screen.getOrderThreePanel();
+        this.mainOrderContainerPanel = screen.getMainOrderPanel();
+
+        this.cintaIngredientOnePanel = screen.getCintaIngredientOne();
+        this.cintaIngredientTwoPanel = screen.getCintaIngredientTwo();
+        this.cintaIngredientThreePanel = screen.getCintaIngredientThree();
+        this.cintaIngredientFourPanel = screen.getCintaIngredientFour();
+        this.cintaIngredientFivePanel = screen.getCintaIngredientFive();
+
+        this.gameTimerLabel = screen.getTimerLabel();
+    }
+
+    private void populateArrays() {
+        this.ordersContainers[0] = this.orderOneContainerPanel;
+        this.ordersContainers[1] = this.orderTwoContainerPanel;
+        this.ordersContainers[2] = this.orderThreeContainerPanel;
+
+        this.ingredientsContainers[0] = this.cintaIngredientOnePanel;
+        this.ingredientsContainers[1] = this.cintaIngredientTwoPanel;
+        this.ingredientsContainers[2] = this.cintaIngredientThreePanel;
+        this.ingredientsContainers[3] = this.cintaIngredientFourPanel;
+        this.ingredientsContainers[4] = this.cintaIngredientFivePanel;
+    }
+
     private void initGameScreen() {
         for (JPanel ordersContainer : ordersContainers) {
             ordersContainer.setOpaque(false);
         }
+
+        for (JPanel ingredientContainer : ingredientsContainers) {
+            ingredientContainer.setOpaque(false);
+        }
+
         mainOrderContainerPanel.setOpaque(false);
 
         screen.setVisible(true);
