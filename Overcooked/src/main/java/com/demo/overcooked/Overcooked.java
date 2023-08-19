@@ -4,13 +4,16 @@
 
 package com.demo.overcooked;
 
+import com.demo.overcooked.ui.MainMenu;
+import java.util.Random;
+
 /**
  *
- * @author XPC
+ * @author Royvin Arrieta M.
  */
 public class Overcooked {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+     new MainMenu().setVisible(true);
     }
 }
