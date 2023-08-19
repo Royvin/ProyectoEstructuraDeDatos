@@ -113,15 +113,13 @@ public class GameScreenUI extends javax.swing.JFrame {
         gameTimerLabel.setForeground(new java.awt.Color(158, 176, 158));
         gameTimerLabel.setText("00:00");
         gameTimerLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(gameTimerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 30, 80, 50));
+        getContentPane().add(gameTimerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 40, 80, 40));
 
         gamePointsLabel.setFont(new java.awt.Font("Poppins Black", 0, 24)); // NOI18N
         gamePointsLabel.setForeground(new java.awt.Color(158, 176, 158));
         gamePointsLabel.setText("0pts");
         gamePointsLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(gamePointsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, 80, 50));
-
-        background.setIcon(new javax.swing.ImageIcon("C:\\Users\\Puta'\\Desktop\\estructura-datos\\proyecto\\ProyectoEstructuraDeDatos\\Overcooked\\assets\\backgrounds\\GameScreen.png")); // NOI18N
+        getContentPane().add(gamePointsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, 80, 40));
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 770));
 
         pack();
