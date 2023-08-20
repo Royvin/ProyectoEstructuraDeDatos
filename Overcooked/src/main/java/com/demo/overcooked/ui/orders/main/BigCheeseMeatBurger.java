@@ -1,24 +1,28 @@
 package com.demo.overcooked.ui.orders.main;
 
+import com.demo.overcooked.ui.Common;
+import com.demo.overcooked.ui.Constants;
 import com.demo.overcooked.ui.GameScreen;
+import com.demo.overcooked.ui.Orders;
 import javax.swing.ImageIcon;
 
 public class BigCheeseMeatBurger extends javax.swing.JPanel {
 
-    GameScreen gameScreen;
-    
-    public BigCheeseMeatBurger(GameScreen gameScreen) {
+    private Orders orders;
+    private static Common common = new Common();
+    private static Constants constant = new Constants();
+
+    public BigCheeseMeatBurger(Orders orders) {
         initComponents();
-        this.gameScreen = gameScreen;
+        this.orders = orders;
         this.setOpaque(false);
-        
-                
-        completeOrderBtn.setOpaque(false);
-        completeOrderBtn.setContentAreaFilled(false);
-        completeOrderBtn.setBorderPainted(false);
-        
-        ImageIcon image = new ImageIcon("assets/orders/big-meat-cheese.png");
-        background.setIcon(image);
+        this.setName(constant.MEAT_AND_CHEESE_BURGER);
+
+        common.setBtnOpaque(completeOrderBtn);
+        common.setBackgroundImage(
+                background,
+                constant.BIG_MEAT_AND_CHEESE_IMG_PATH
+        );
     }
 
     /**
@@ -41,14 +45,12 @@ public class BigCheeseMeatBurger extends javax.swing.JPanel {
             }
         });
         add(completeOrderBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 290, 50));
-
-        background.setIcon(new javax.swing.ImageIcon("C:\\Users\\Puta'\\Desktop\\proyecto-ed\\ProyectoEstructuraDeDatos\\Overcooked\\assets\\orders\\big-meat-cheese.png")); // NOI18N
-        add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 320));
     }// </editor-fold>//GEN-END:initComponents
 
     private void completeOrderBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completeOrderBtnMouseClicked
-        System.out.println("com.demo.overcooked.ui.orders.main.BigCheeseMeatBurger.completeOrderBtnMouseClicked()");
-        gameScreen.completeOrder();
+        System.out.println("completeOrderBtnMouseClicked()");
+        orders.completeOrder();
     }//GEN-LAST:event_completeOrderBtnMouseClicked
 
 

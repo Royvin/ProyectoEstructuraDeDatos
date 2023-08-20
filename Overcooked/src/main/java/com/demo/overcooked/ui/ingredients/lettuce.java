@@ -1,23 +1,25 @@
-package com.demo.overcooked.ui.orders.tiny;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ */
+package com.demo.overcooked.ui.ingredients;
 
-import com.demo.overcooked.ui.Common;
-import com.demo.overcooked.ui.Constants;
+import javax.swing.ImageIcon;
 
+/**
+ *
+ * @author Puta'
+ */
+public class lettuce extends javax.swing.JPanel {
 
-public class TinyCheeseMeatBurger extends javax.swing.JPanel {
-
-    private static Common common = new Common();
-    private static Constants constant = new Constants();
-    
-    public TinyCheeseMeatBurger() {
+    /**
+     * Creates new form lettuce
+     */
+    public lettuce() {
         initComponents();
-        this.setOpaque(false);
-        this.setName(constant.MEAT_AND_CHEESE_BURGER);
         
-        common.setBackgroundImage(
-                background,
-                constant.TINY_MEAT_AND_CHEESE_IMG_PATH
-        );
+        ImageIcon image = new ImageIcon("assets/ingredients/lettuce.png");
+        background.setIcon(image);
     }
 
     /**
@@ -35,11 +37,11 @@ public class TinyCheeseMeatBurger extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
