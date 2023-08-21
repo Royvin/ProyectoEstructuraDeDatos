@@ -5,7 +5,6 @@
 package com.demo.overcooked;
 
 import com.demo.overcooked.ui.MainMenu;
-import java.util.Random;
 
 /**
  *
