@@ -2,24 +2,26 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package com.demo.overcooked.ui.ingredients;
+package com.demo.overcooked.ui.transporter;
 
-import javax.swing.ImageIcon;
+import com.demo.overcooked.ui.Common;
+import com.demo.overcooked.ui.Constants;
 
 /**
  *
  * @author Puta'
  */
-public class bread extends javax.swing.JPanel {
+public class transporterBasePanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form lettuce
-     */
-    public bread() {
+    private static Common common = new Common();
+    private static Constants constant = new Constants();
+
+    public transporterBasePanel() {
         initComponents();
-        
-        ImageIcon image = new ImageIcon("assets/ingredients/bread.png");
-        background.setIcon(image);
+        common.setBackgroundImage(
+                background,
+                constant.TRANSPORTER_BASE_PANEL_IMG_PATH
+        );
     }
 
     /**
@@ -31,22 +33,26 @@ public class bread extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jRadioButton1 = new javax.swing.JRadioButton();
         background = new javax.swing.JLabel();
+
+        jRadioButton1.setText("jRadioButton1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
+    private javax.swing.JRadioButton jRadioButton1;
     // End of variables declaration//GEN-END:variables
 }

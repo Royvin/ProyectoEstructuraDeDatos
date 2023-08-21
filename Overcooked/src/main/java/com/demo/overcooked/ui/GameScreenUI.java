@@ -42,16 +42,6 @@ public class GameScreenUI extends javax.swing.JFrame {
         orderTwoPanel = new javax.swing.JPanel();
         orderThreePanel = new javax.swing.JPanel();
         mainOrderPanel = new javax.swing.JPanel();
-        addIngredientBtnOne = new javax.swing.JButton();
-        addIngredientBtnTwo = new javax.swing.JButton();
-        addIngredientBtnThree = new javax.swing.JButton();
-        addIngredientButtonFour = new javax.swing.JButton();
-        addIngredientButtonFive = new javax.swing.JButton();
-        deleteIngredientBtnOne = new javax.swing.JButton();
-        deleteIngredientBtnTwo = new javax.swing.JButton();
-        deleteIngredientBtnThree = new javax.swing.JButton();
-        deleteIngredientBtnFour = new javax.swing.JButton();
-        deleteIngredientBtnFive = new javax.swing.JButton();
         transporterPanelOne = new javax.swing.JPanel();
         transporterPanelTwo = new javax.swing.JPanel();
         transporterPanelThree = new javax.swing.JPanel();
@@ -136,26 +126,6 @@ public class GameScreenUI extends javax.swing.JFrame {
         );
 
         getContentPane().add(mainOrderPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, 610, 320));
-        getContentPane().add(addIngredientBtnOne, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 670, 60, 60));
-        addIngredientBtnOne.setName("add-btn");
-        getContentPane().add(addIngredientBtnTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 670, 70, 60));
-        addIngredientBtnTwo.setName("add-btn");
-        getContentPane().add(addIngredientBtnThree, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 673, 70, 50));
-        addIngredientBtnThree.setName("add-btn");
-        getContentPane().add(addIngredientButtonFour, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 673, 60, 50));
-        addIngredientButtonFour.setName("add-btn");
-        getContentPane().add(addIngredientButtonFive, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 673, 70, 50));
-        addIngredientButtonFive.setName("add-btn");
-        getContentPane().add(deleteIngredientBtnOne, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 670, 70, 60));
-        deleteIngredientBtnOne.setName("delete-btn");
-        getContentPane().add(deleteIngredientBtnTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(675, 673, 70, 50));
-        deleteIngredientBtnTwo.setName("delete-btn");
-        getContentPane().add(deleteIngredientBtnThree, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 670, 60, 60));
-        deleteIngredientBtnThree.setName("delete-btn");
-        getContentPane().add(deleteIngredientBtnFour, new org.netbeans.lib.awtextra.AbsoluteConstraints(1065, 670, 60, 60));
-        deleteIngredientBtnFour.setName("delete-btn");
-        getContentPane().add(deleteIngredientBtnFive, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 670, 60, 60));
-        deleteIngredientBtnFive.setName("delete-btn");
 
         javax.swing.GroupLayout transporterPanelOneLayout = new javax.swing.GroupLayout(transporterPanelOne);
         transporterPanelOne.setLayout(transporterPanelOneLayout);
@@ -165,11 +135,11 @@ public class GameScreenUI extends javax.swing.JFrame {
         );
         transporterPanelOneLayout.setVerticalGroup(
             transporterPanelOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
+            .addGap(0, 200, Short.MAX_VALUE)
         );
 
-        getContentPane().add(transporterPanelOne, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 530, 170, 120));
-        transporterPanelOne.setName("transporter-panel");
+        getContentPane().add(transporterPanelOne, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 530, 170, 200));
+        transporterPanelOne.setName("transporter-panel-one");
 
         javax.swing.GroupLayout transporterPanelTwoLayout = new javax.swing.GroupLayout(transporterPanelTwo);
         transporterPanelTwo.setLayout(transporterPanelTwoLayout);
@@ -179,11 +149,11 @@ public class GameScreenUI extends javax.swing.JFrame {
         );
         transporterPanelTwoLayout.setVerticalGroup(
             transporterPanelTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
+            .addGap(0, 200, Short.MAX_VALUE)
         );
 
-        getContentPane().add(transporterPanelTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 530, 160, 120));
-        transporterPanelTwo.setName("transporter-panel");
+        getContentPane().add(transporterPanelTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 530, 160, 200));
+        transporterPanelTwo.setName("transporter-panel-two");
 
         javax.swing.GroupLayout transporterPanelThreeLayout = new javax.swing.GroupLayout(transporterPanelThree);
         transporterPanelThree.setLayout(transporterPanelThreeLayout);
@@ -193,11 +163,11 @@ public class GameScreenUI extends javax.swing.JFrame {
         );
         transporterPanelThreeLayout.setVerticalGroup(
             transporterPanelThreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
+            .addGap(0, 200, Short.MAX_VALUE)
         );
 
-        getContentPane().add(transporterPanelThree, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 530, 170, 120));
-        transporterPanelThree.setName("transporter-panel");
+        getContentPane().add(transporterPanelThree, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 530, 170, 200));
+        transporterPanelThree.setName("transporter-panel-three");
 
         javax.swing.GroupLayout transporterPanelFourLayout = new javax.swing.GroupLayout(transporterPanelFour);
         transporterPanelFour.setLayout(transporterPanelFourLayout);
@@ -207,11 +177,11 @@ public class GameScreenUI extends javax.swing.JFrame {
         );
         transporterPanelFourLayout.setVerticalGroup(
             transporterPanelFourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
+            .addGap(0, 200, Short.MAX_VALUE)
         );
 
-        getContentPane().add(transporterPanelFour, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 530, 170, 120));
-        transporterPanelFour.setName("transporter-panel");
+        getContentPane().add(transporterPanelFour, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 530, 170, 200));
+        transporterPanelFour.setName("transporter-panel-four");
 
         javax.swing.GroupLayout transporterPanelFiveLayout = new javax.swing.GroupLayout(transporterPanelFive);
         transporterPanelFive.setLayout(transporterPanelFiveLayout);
@@ -221,13 +191,11 @@ public class GameScreenUI extends javax.swing.JFrame {
         );
         transporterPanelFiveLayout.setVerticalGroup(
             transporterPanelFiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
+            .addGap(0, 200, Short.MAX_VALUE)
         );
 
-        getContentPane().add(transporterPanelFive, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 530, 170, 120));
-        transporterPanelFive.setName("transporter-panel");
-
-        background.setIcon(new javax.swing.ImageIcon("C:\\Users\\Puta'\\Desktop\\estructura-datos\\proyecto\\ProyectoEstructuraDeDatos\\Overcooked\\assets\\backgrounds\\GameScreen.png")); // NOI18N
+        getContentPane().add(transporterPanelFive, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 530, 170, 200));
+        transporterPanelFive.setName("transporter-panel-five");
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 760));
 
         pack();
@@ -293,46 +261,6 @@ public class GameScreenUI extends javax.swing.JFrame {
         return orderTwoPanel;
     }
 
-    public JButton getAddIngredientBtnOne() {
-        return addIngredientBtnOne;
-    }
-
-    public JButton getAddIngredientBtnThree() {
-        return addIngredientBtnThree;
-    }
-
-    public JButton getAddIngredientBtnTwo() {
-        return addIngredientBtnTwo;
-    }
-
-    public JButton getAddIngredientButtonFive() {
-        return addIngredientButtonFive;
-    }
-
-    public JButton getAddIngredientButtonFour() {
-        return addIngredientButtonFour;
-    }
-
-    public JButton getDeleteIngredientBtnFive() {
-        return deleteIngredientBtnFive;
-    }
-
-    public JButton getDeleteIngredientBtnFour() {
-        return deleteIngredientBtnFour;
-    }
-
-    public JButton getDeleteIngredientBtnOne() {
-        return deleteIngredientBtnOne;
-    }
-
-    public JButton getDeleteIngredientBtnThree() {
-        return deleteIngredientBtnThree;
-    }
-
-    public JButton getDeleteIngredientBtnTwo() {
-        return deleteIngredientBtnTwo;
-    }
-
     public JPanel getTransporterPanelFive() {
         return transporterPanelFive;
     }
@@ -363,17 +291,7 @@ public class GameScreenUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addIngredientBtnOne;
-    private javax.swing.JButton addIngredientBtnThree;
-    private javax.swing.JButton addIngredientBtnTwo;
-    private javax.swing.JButton addIngredientButtonFive;
-    private javax.swing.JButton addIngredientButtonFour;
     private javax.swing.JLabel background;
-    private javax.swing.JButton deleteIngredientBtnFive;
-    private javax.swing.JButton deleteIngredientBtnFour;
-    private javax.swing.JButton deleteIngredientBtnOne;
-    private javax.swing.JButton deleteIngredientBtnThree;
-    private javax.swing.JButton deleteIngredientBtnTwo;
     private javax.swing.JLabel gamePointsLabel;
     private javax.swing.JLabel gameTimerLabel;
     private javax.swing.JDesktopPane jDesktopPane1;

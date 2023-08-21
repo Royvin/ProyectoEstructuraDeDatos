@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package com.demo.overcooked.ui.ingredients;
+package com.demo.overcooked.ui.transporter.ingredients;
 
 import javax.swing.ImageIcon;
 
@@ -10,15 +10,15 @@ import javax.swing.ImageIcon;
  *
  * @author Puta'
  */
-public class cheese extends javax.swing.JPanel {
+public class bread extends javax.swing.JPanel {
 
     /**
      * Creates new form lettuce
      */
-    public cheese() {
+    public bread() {
         initComponents();
         
-        ImageIcon image = new ImageIcon("assets/ingredients/cheese.png");
+        ImageIcon image = new ImageIcon("assets/ingredients/bread.png");
         background.setIcon(image);
     }
 
@@ -33,16 +33,8 @@ public class cheese extends javax.swing.JPanel {
 
         background = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-        );
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 120));
     }// </editor-fold>//GEN-END:initComponents
 
 

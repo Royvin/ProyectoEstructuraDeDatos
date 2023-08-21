@@ -40,6 +40,7 @@ public class Orders {
         this.ordersContainers[1] = gameScreen.getOrderTwoPanel();
         this.ordersContainers[2] = gameScreen.getOrderThreePanel();
         this.mainOrderPanel = gameScreen.getMainOrderPanel();
+        setOpaqueOrderComponents();
     }
     
     private void clearPanel(JPanel panel) {

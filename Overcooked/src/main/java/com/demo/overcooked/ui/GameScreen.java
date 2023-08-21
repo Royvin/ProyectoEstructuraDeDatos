@@ -6,11 +6,8 @@ public class GameScreen {
     }
     
     private void initScreen(){
-        Orders orders = Orders.getInstance();
-        Transporter transporter = Transporter.getInstance();
-        
-        orders.setOpaqueOrderComponents();
-        transporter.setOpaqueTransporterComponents();
+        Orders.getInstance();
+        Transporter.getInstance();
     }
     
     private void initGame() {
