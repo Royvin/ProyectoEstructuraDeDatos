@@ -39,6 +39,7 @@ public class Orders {
         this.ordersContainers[0] = gameScreen.getOrderOnePanel();
         this.ordersContainers[1] = gameScreen.getOrderTwoPanel();
         this.ordersContainers[2] = gameScreen.getOrderThreePanel();
+        this.mainOrderPanel = gameScreen.getMainOrderPanel();
     }
     
     private void clearPanel(JPanel panel) {
@@ -100,13 +101,13 @@ public class Orders {
         mainOrder.setSize(610, 320);
         mainOrder.setLocation(0, 0);
 
-        this.gameScreen.getMainOrderPanel().removeAll();
-        this.gameScreen.getMainOrderPanel().add(
+        this.mainOrderPanel.removeAll();
+        this.mainOrderPanel.add(
                 mainOrder,
                 BorderLayout.CENTER
         );
-        this.gameScreen.getMainOrderPanel().revalidate();
-        this.gameScreen.getMainOrderPanel().repaint();
+        this.mainOrderPanel.revalidate();
+        this.mainOrderPanel.repaint();
     }
 
     private void addContentToOrderPanel(
