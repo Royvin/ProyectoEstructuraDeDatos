@@ -4,22 +4,10 @@
  */
 package com.demo.overcooked.ui;
 
-import com.demo.overcooked.estructuras.ordenes.*;
-import com.demo.overcooked.ui.orders.tiny.*;
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.image.BufferedImage;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Random;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-import sun.audio.AudioPlayer;
-import sun.audio.AudioStream;
 
 /**
  *
@@ -49,12 +37,27 @@ public class GameScreenUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
+        gameTimerLabel = new javax.swing.JLabel();
+        gamePointsLabel = new javax.swing.JLabel();
         orderOnePanel = new javax.swing.JPanel();
         orderTwoPanel = new javax.swing.JPanel();
         orderThreePanel = new javax.swing.JPanel();
         mainOrderPanel = new javax.swing.JPanel();
-        gameTimerLabel = new javax.swing.JLabel();
-        gamePointsLabel = new javax.swing.JLabel();
+        addIngredientBtnOne = new javax.swing.JButton();
+        addIngredientBtnTwo = new javax.swing.JButton();
+        addIngredientBtnThree = new javax.swing.JButton();
+        addIngredientButtonFour = new javax.swing.JButton();
+        addIngredientButtonFive = new javax.swing.JButton();
+        deleteIngredientBtnOne = new javax.swing.JButton();
+        deleteIngredientBtnTwo = new javax.swing.JButton();
+        deleteIngredientBtnThree = new javax.swing.JButton();
+        deleteIngredientBtnFour = new javax.swing.JButton();
+        deleteIngredientBtnFive = new javax.swing.JButton();
+        transporterPanelOne = new javax.swing.JPanel();
+        transporterPanelTwo = new javax.swing.JPanel();
+        transporterPanelThree = new javax.swing.JPanel();
+        transporterPanelFour = new javax.swing.JPanel();
+        transporterPanelFive = new javax.swing.JPanel();
         background = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
@@ -70,6 +73,18 @@ public class GameScreenUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        gameTimerLabel.setFont(new java.awt.Font("Poppins Black", 0, 24)); // NOI18N
+        gameTimerLabel.setForeground(new java.awt.Color(158, 176, 158));
+        gameTimerLabel.setText("00:00");
+        gameTimerLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(gameTimerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 40, 80, 30));
+
+        gamePointsLabel.setFont(new java.awt.Font("Poppins Black", 0, 24)); // NOI18N
+        gamePointsLabel.setForeground(new java.awt.Color(158, 176, 158));
+        gamePointsLabel.setText("0pts");
+        gamePointsLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(gamePointsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, 80, 30));
 
         javax.swing.GroupLayout orderOnePanelLayout = new javax.swing.GroupLayout(orderOnePanel);
         orderOnePanel.setLayout(orderOnePanelLayout);
@@ -121,20 +136,100 @@ public class GameScreenUI extends javax.swing.JFrame {
             .addGap(0, 320, Short.MAX_VALUE)
         );
 
-        getContentPane().add(mainOrderPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 190, 610, 320));
+        getContentPane().add(mainOrderPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 180, 610, 320));
+        getContentPane().add(addIngredientBtnOne, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 670, 60, 60));
+        addIngredientBtnOne.setName("add-btn");
+        getContentPane().add(addIngredientBtnTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 670, 70, 60));
+        addIngredientBtnTwo.setName("add-btn");
+        getContentPane().add(addIngredientBtnThree, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 673, 70, 50));
+        addIngredientBtnThree.setName("add-btn");
+        getContentPane().add(addIngredientButtonFour, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 673, 60, 50));
+        addIngredientButtonFour.setName("add-btn");
+        getContentPane().add(addIngredientButtonFive, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 673, 70, 50));
+        addIngredientButtonFive.setName("add-btn");
+        getContentPane().add(deleteIngredientBtnOne, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 670, 70, 60));
+        deleteIngredientBtnOne.setName("delete-btn");
+        getContentPane().add(deleteIngredientBtnTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(675, 673, 70, 50));
+        deleteIngredientBtnTwo.setName("delete-btn");
+        getContentPane().add(deleteIngredientBtnThree, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 670, 60, 60));
+        deleteIngredientBtnThree.setName("delete-btn");
+        getContentPane().add(deleteIngredientBtnFour, new org.netbeans.lib.awtextra.AbsoluteConstraints(1065, 670, 60, 60));
+        deleteIngredientBtnFour.setName("delete-btn");
+        getContentPane().add(deleteIngredientBtnFive, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 670, 60, 60));
+        deleteIngredientBtnFive.setName("delete-btn");
 
-        gameTimerLabel.setFont(new java.awt.Font("Poppins Black", 0, 24)); // NOI18N
-        gameTimerLabel.setForeground(new java.awt.Color(158, 176, 158));
-        gameTimerLabel.setText("00:00");
-        gameTimerLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(gameTimerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 30, 80, 50));
+        javax.swing.GroupLayout transporterPanelOneLayout = new javax.swing.GroupLayout(transporterPanelOne);
+        transporterPanelOne.setLayout(transporterPanelOneLayout);
+        transporterPanelOneLayout.setHorizontalGroup(
+            transporterPanelOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 170, Short.MAX_VALUE)
+        );
+        transporterPanelOneLayout.setVerticalGroup(
+            transporterPanelOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
 
-        gamePointsLabel.setFont(new java.awt.Font("Poppins Black", 0, 24)); // NOI18N
-        gamePointsLabel.setForeground(new java.awt.Color(158, 176, 158));
-        gamePointsLabel.setText("0pts");
-        gamePointsLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(gamePointsLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, 80, 50));
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1370, 770));
+        getContentPane().add(transporterPanelOne, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 530, 170, 120));
+        transporterPanelOne.setName("transporter-panel");
+
+        javax.swing.GroupLayout transporterPanelTwoLayout = new javax.swing.GroupLayout(transporterPanelTwo);
+        transporterPanelTwo.setLayout(transporterPanelTwoLayout);
+        transporterPanelTwoLayout.setHorizontalGroup(
+            transporterPanelTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 160, Short.MAX_VALUE)
+        );
+        transporterPanelTwoLayout.setVerticalGroup(
+            transporterPanelTwoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(transporterPanelTwo, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 530, 160, 120));
+        transporterPanelTwo.setName("transporter-panel");
+
+        javax.swing.GroupLayout transporterPanelThreeLayout = new javax.swing.GroupLayout(transporterPanelThree);
+        transporterPanelThree.setLayout(transporterPanelThreeLayout);
+        transporterPanelThreeLayout.setHorizontalGroup(
+            transporterPanelThreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 170, Short.MAX_VALUE)
+        );
+        transporterPanelThreeLayout.setVerticalGroup(
+            transporterPanelThreeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(transporterPanelThree, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 530, 170, 120));
+        transporterPanelThree.setName("transporter-panel");
+
+        javax.swing.GroupLayout transporterPanelFourLayout = new javax.swing.GroupLayout(transporterPanelFour);
+        transporterPanelFour.setLayout(transporterPanelFourLayout);
+        transporterPanelFourLayout.setHorizontalGroup(
+            transporterPanelFourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 170, Short.MAX_VALUE)
+        );
+        transporterPanelFourLayout.setVerticalGroup(
+            transporterPanelFourLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(transporterPanelFour, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 530, 170, 120));
+        transporterPanelFour.setName("transporter-panel");
+
+        javax.swing.GroupLayout transporterPanelFiveLayout = new javax.swing.GroupLayout(transporterPanelFive);
+        transporterPanelFive.setLayout(transporterPanelFiveLayout);
+        transporterPanelFiveLayout.setHorizontalGroup(
+            transporterPanelFiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 170, Short.MAX_VALUE)
+        );
+        transporterPanelFiveLayout.setVerticalGroup(
+            transporterPanelFiveLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 120, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(transporterPanelFive, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 530, 170, 120));
+        transporterPanelFive.setName("transporter-panel");
+
+        background.setIcon(new javax.swing.ImageIcon("C:\\Users\\Puta'\\Desktop\\estructura-datos\\proyecto\\ProyectoEstructuraDeDatos\\Overcooked\\assets\\backgrounds\\GameScreen.png")); // NOI18N
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -201,6 +296,68 @@ public class GameScreenUI extends javax.swing.JFrame {
         return orderTwoPanel;
     }
 
+    public JButton getAddIngredientBtnOne() {
+        return addIngredientBtnOne;
+    }
+
+    public JButton getAddIngredientBtnThree() {
+        return addIngredientBtnThree;
+    }
+
+    public JButton getAddIngredientBtnTwo() {
+        return addIngredientBtnTwo;
+    }
+
+    public JButton getAddIngredientButtonFive() {
+        return addIngredientButtonFive;
+    }
+
+    public JButton getAddIngredientButtonFour() {
+        return addIngredientButtonFour;
+    }
+
+    public JButton getDeleteIngredientBtnFive() {
+        return deleteIngredientBtnFive;
+    }
+
+    public JButton getDeleteIngredientBtnFour() {
+        return deleteIngredientBtnFour;
+    }
+
+    public JButton getDeleteIngredientBtnOne() {
+        return deleteIngredientBtnOne;
+    }
+
+    public JButton getDeleteIngredientBtnThree() {
+        return deleteIngredientBtnThree;
+    }
+
+    public JButton getDeleteIngredientBtnTwo() {
+        return deleteIngredientBtnTwo;
+    }
+
+    public JPanel getTransporterPanelFive() {
+        return transporterPanelFive;
+    }
+
+    public JPanel getTransporterPanelFour() {
+        return transporterPanelFour;
+    }
+
+    public JPanel getTransporterPanelOne() {
+        return transporterPanelOne;
+    }
+
+    public JPanel getTransporterPanelThree() {
+        return transporterPanelThree;
+    }
+
+    public JPanel getTransporterPanelTwo() {
+        return transporterPanelTwo;
+    }
+
+    
+    
     public static GameScreenUI getInstance() {
         if (instance == null) {
             instance = new GameScreenUI();
@@ -221,7 +378,17 @@ public class GameScreenUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addIngredientBtnOne;
+    private javax.swing.JButton addIngredientBtnThree;
+    private javax.swing.JButton addIngredientBtnTwo;
+    private javax.swing.JButton addIngredientButtonFive;
+    private javax.swing.JButton addIngredientButtonFour;
     private javax.swing.JLabel background;
+    private javax.swing.JButton deleteIngredientBtnFive;
+    private javax.swing.JButton deleteIngredientBtnFour;
+    private javax.swing.JButton deleteIngredientBtnOne;
+    private javax.swing.JButton deleteIngredientBtnThree;
+    private javax.swing.JButton deleteIngredientBtnTwo;
     private javax.swing.JLabel gamePointsLabel;
     private javax.swing.JLabel gameTimerLabel;
     private javax.swing.JDesktopPane jDesktopPane1;
@@ -229,5 +396,10 @@ public class GameScreenUI extends javax.swing.JFrame {
     private javax.swing.JPanel orderOnePanel;
     private javax.swing.JPanel orderThreePanel;
     private javax.swing.JPanel orderTwoPanel;
+    private javax.swing.JPanel transporterPanelFive;
+    private javax.swing.JPanel transporterPanelFour;
+    private javax.swing.JPanel transporterPanelOne;
+    private javax.swing.JPanel transporterPanelThree;
+    private javax.swing.JPanel transporterPanelTwo;
     // End of variables declaration//GEN-END:variables
 }

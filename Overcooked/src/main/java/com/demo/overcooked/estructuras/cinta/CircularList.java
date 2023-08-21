@@ -1,5 +1,7 @@
 package com.demo.overcooked.estructuras.cinta;
 
+import javax.swing.JPanel;
+
 
 public class CircularList {
     private static CircularList instance;
@@ -47,10 +49,13 @@ public class CircularList {
             }
         }
     
-    public Node getNodehead(){
+    public JPanel getHead(){
+        return head != null ? head.getDato().getIngredient() : null;
+    }
+    
+    public Node getNodeHead(){
         return head != null ? head : null;
     }
-
 
     public static CircularList getInstance() {
              if (instance == null) {

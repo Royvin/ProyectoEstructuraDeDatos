@@ -1,26 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package com.demo.overcooked.ui.orders.tiny;
 
-import javax.swing.ImageIcon;
+import com.demo.overcooked.ui.Common;
+import com.demo.overcooked.ui.Constants;
 
-/**
- *
- * @author Puta'
- */
+
 public class TinyCheeseMeatBurger extends javax.swing.JPanel {
 
-    /**
-     * Creates new form CheeseBurger
-     */
+    private static Common common = new Common();
+    private static Constants constant = new Constants();
+    
     public TinyCheeseMeatBurger() {
         initComponents();
         this.setOpaque(false);
+        this.setName(constant.MEAT_AND_CHEESE_BURGER);
         
-        ImageIcon image = new ImageIcon("assets/orders/meat-cheese.png");
-        background.setIcon(image);
+        common.setBackgroundImage(
+                background,
+                constant.TINY_MEAT_AND_CHEESE_IMG_PATH
+        );
     }
 
     /**
