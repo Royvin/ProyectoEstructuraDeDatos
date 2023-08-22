@@ -4,7 +4,8 @@
  */
 package com.demo.overcooked.ui.orders.tiny;
 
-import javax.swing.ImageIcon;
+import com.demo.overcooked.ui.Common;
+import com.demo.overcooked.ui.Constants;
 
 /**
  *
@@ -12,15 +13,18 @@ import javax.swing.ImageIcon;
  */
 public class TinyMeatBurger extends javax.swing.JPanel {
 
-    /**
-     * Creates new form CheeseBurger
-     */
+    private static Common common = new Common();
+    private static Constants constant = new Constants();
+    
     public TinyMeatBurger() {
         initComponents();
         this.setOpaque(false);
+        this.setName(constant.MEAT_BURGER);
         
-        ImageIcon image = new ImageIcon("assets/orders/meat.png");
-        background.setIcon(image);
+        common.setBackgroundImage(
+                background,
+                constant.TINY_MEAT_IMG_PATH
+        );
     }
 
     /**

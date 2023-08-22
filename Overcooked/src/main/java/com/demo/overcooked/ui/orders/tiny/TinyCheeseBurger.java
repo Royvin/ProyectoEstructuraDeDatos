@@ -1,26 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package com.demo.overcooked.ui.orders.tiny;
 
-import javax.swing.ImageIcon;
+import com.demo.overcooked.ui.Common;
+import com.demo.overcooked.ui.Constants;
 
-/**
- *
- * @author Puta'
- */
 public class TinyCheeseBurger extends javax.swing.JPanel {
 
-    /**
-     * Creates new form CheeseBurger
-     */
+    private static Common common = new Common();
+    private static Constants constant = new Constants();
+    
     public TinyCheeseBurger() {
         initComponents();
         this.setOpaque(false);
-        
-        ImageIcon image = new ImageIcon("assets/orders/cheese.png");
-        background.setIcon(image);
+        this.setName(constant.CHEESE_BURGER);
+
+        common.setBackgroundImage(
+                background,
+                constant.TINY_CHEESE_IMG_PATH
+        );
     }
 
     /**
@@ -38,11 +34,11 @@ public class TinyCheeseBurger extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
