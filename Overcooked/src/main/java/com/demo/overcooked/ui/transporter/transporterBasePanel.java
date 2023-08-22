@@ -56,16 +56,15 @@ public class transporterBasePanel extends javax.swing.JPanel {
         ingredientPanel.setLayout(ingredientPanelLayout);
         ingredientPanelLayout.setHorizontalGroup(
             ingredientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
+            .addGap(0, 164, Short.MAX_VALUE)
         );
         ingredientPanelLayout.setVerticalGroup(
             ingredientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 130, Short.MAX_VALUE)
+            .addGap(0, 110, Short.MAX_VALUE)
         );
 
-        add(ingredientPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 130));
-
-        background.setIcon(new javax.swing.ImageIcon("C:\\Users\\Puta'\\Desktop\\estructura-datos\\proyecto\\ProyectoEstructuraDeDatos\\Overcooked\\assets\\ingredients\\base-panel.png")); // NOI18N
+        add(ingredientPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 164, 110));
+        ingredientPanel.setName("ingredient-panel");
         add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 200));
     }// </editor-fold>//GEN-END:initComponents
 

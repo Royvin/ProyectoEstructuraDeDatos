@@ -17,7 +17,8 @@ public class meat extends javax.swing.JPanel {
      */
     public meat() {
         initComponents();
-        
+        this.setOpaque(false);
+
         ImageIcon image = new ImageIcon("assets/ingredients/meat.png");
         background.setIcon(image);
     }

@@ -18,4 +18,5 @@ public class Constants {
     
     public final int[] TINY_ORDERS_SIZE = new int[]{195, 156};
     public final int[] TRANSPORTER_BASE_PANEL = new int[]{164, 200};
+    public final int[] INGREDIENT_PANEL_SIZE = new int[]{164, 124};
 }

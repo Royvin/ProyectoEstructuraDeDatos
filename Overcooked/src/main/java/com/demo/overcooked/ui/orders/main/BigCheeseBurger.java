@@ -35,6 +35,7 @@ public class BigCheeseBurger extends javax.swing.JPanel {
     private void initComponents() {
 
         completeOrderBtn = new javax.swing.JButton();
+        ingredientsCounter = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -45,6 +46,12 @@ public class BigCheeseBurger extends javax.swing.JPanel {
             }
         });
         add(completeOrderBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 290, 50));
+
+        ingredientsCounter.setFont(new java.awt.Font("Poppins Black", 0, 20)); // NOI18N
+        ingredientsCounter.setForeground(new java.awt.Color(83, 49, 30));
+        add(ingredientsCounter, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 56, 90, 30));
+
+        background.setIcon(new javax.swing.ImageIcon("C:\\Users\\Puta'\\Desktop\\estructura-datos\\proyecto\\ProyectoEstructuraDeDatos\\Overcooked\\assets\\orders\\big-cheese.png")); // NOI18N
         add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 320));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -56,5 +63,6 @@ public class BigCheeseBurger extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
     private javax.swing.JButton completeOrderBtn;
+    private javax.swing.JLabel ingredientsCounter;
     // End of variables declaration//GEN-END:variables
 }

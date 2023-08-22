@@ -17,7 +17,8 @@ public class lettuce extends javax.swing.JPanel {
      */
     public lettuce() {
         initComponents();
-        
+        this.setOpaque(false);
+
         ImageIcon image = new ImageIcon("assets/ingredients/lettuce.png");
         background.setIcon(image);
     }

@@ -1,5 +1,10 @@
 package com.demo.overcooked.ui;
 
+import com.demo.overcooked.estructuras.cinta.CircularList;
+import com.demo.overcooked.ui.transporter.ingredients.bread;
+import com.demo.overcooked.ui.transporter.ingredients.cheese;
+import com.demo.overcooked.ui.transporter.ingredients.lettuce;
+import com.demo.overcooked.ui.transporter.ingredients.meat;
 import com.demo.overcooked.ui.transporter.transporterBasePanel;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
@@ -17,18 +22,34 @@ public class Transporter {
 
     private JPanel[] transporterContainerPanels = new JPanel[5];
     private JButton[] buttons = new JButton[10];
+    
+    private CircularList ingredientsTransporter = new CircularList();
 
     public Transporter() {
         this.gameScreen = GameScreenUI.getInstance();
         configTransporter();
         buttonsListeners();
+        populateTransporter();
     }
-
-    public static Transporter getInstance() {
-        if (instance == null) {
-            instance = new Transporter();
+    
+    public void populateTransporter(){
+        for (JPanel transporterContainerPanel : transporterContainerPanels) {
+            JPanel basePanel = (JPanel) transporterContainerPanel.getComponents()[0];
+            JPanel ingredientPanel = (JPanel) getComponents(basePanel, "panel")[0];
+            
+            common.addContentToPanel(ingredientPanel, getRandomIngredient(), constant.INGREDIENT_PANEL_SIZE);
         }
-        return instance;
+    }
+    
+    public JPanel getRandomIngredient(){
+        JPanel[] ingredients = new JPanel[]{
+            new lettuce(),
+            new cheese(),
+            new bread(),
+            new meat()
+        };
+        
+        return ingredients[common.getRandomNumber(ingredients.length)];
     }
 
     private void addIngredientToOrder(JPanel transporterPanel) {
@@ -148,5 +169,12 @@ public class Transporter {
         addBasePanelToContainerPanels();
         populatePanelsAndBtnsArrays();
         setOpaqueTransporterComponents();
+    }
+    
+      public static Transporter getInstance() {
+        if (instance == null) {
+            instance = new Transporter();
+        }
+        return instance;
     }
 }

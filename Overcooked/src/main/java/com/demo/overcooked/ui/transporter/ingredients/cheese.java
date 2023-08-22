@@ -17,6 +17,7 @@ public class cheese extends javax.swing.JPanel {
      */
     public cheese() {
         initComponents();
+        this.setOpaque(false);
         
         ImageIcon image = new ImageIcon("assets/ingredients/cheese.png");
         background.setIcon(image);

@@ -17,6 +17,7 @@ public class bread extends javax.swing.JPanel {
      */
     public bread() {
         initComponents();
+        this.setOpaque(false);
         
         ImageIcon image = new ImageIcon("assets/ingredients/bread.png");
         background.setIcon(image);

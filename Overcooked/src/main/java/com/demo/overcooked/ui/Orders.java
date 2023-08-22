@@ -107,7 +107,7 @@ public class Orders {
 
     public void addNewOrder() {
         for (JPanel parentPanel : ordersContainers) {
-            if (!common.orderParentPanelIsEmpty(parentPanel)) {
+            if (!common.parentPanelIsEmpty(parentPanel)) {
                 continue;
             }
 

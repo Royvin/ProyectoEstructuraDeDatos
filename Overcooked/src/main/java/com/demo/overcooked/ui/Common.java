@@ -50,9 +50,14 @@ public class Common {
         orderParentPanel.repaint();
     }
     
+    public boolean panelIsEmpty(JPanel panel){
+        Component[] panelComponents = panel.getComponents();
+        
+        return panelComponents.length == 0 ? true : false;
+    }
     
-    public boolean orderParentPanelIsEmpty(JPanel parentOrderPanel) {
-        Component[] orderComponents = parentOrderPanel.getComponents();
+    public boolean parentPanelIsEmpty(JPanel parentPanel) {
+        Component[] orderComponents = parentPanel.getComponents();
 
         return orderComponents.length == 0 ? true : false;
     }

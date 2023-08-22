@@ -36,6 +36,7 @@ public class BigCheeseMeatBurger extends javax.swing.JPanel {
 
         completeOrderBtn = new javax.swing.JButton();
         background = new javax.swing.JLabel();
+        ingredientsCounter = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -46,6 +47,10 @@ public class BigCheeseMeatBurger extends javax.swing.JPanel {
         });
         add(completeOrderBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 290, 50));
         add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 320));
+
+        ingredientsCounter.setFont(new java.awt.Font("Poppins Black", 0, 20)); // NOI18N
+        ingredientsCounter.setForeground(new java.awt.Color(83, 49, 30));
+        add(ingredientsCounter, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 56, 90, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void completeOrderBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_completeOrderBtnMouseClicked
@@ -57,5 +62,6 @@ public class BigCheeseMeatBurger extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
     private javax.swing.JButton completeOrderBtn;
+    private javax.swing.JLabel ingredientsCounter;
     // End of variables declaration//GEN-END:variables
 }
