@@ -1,14 +1,10 @@
 package com.demo.overcooked.ui;
 
-import com.demo.overcooked.ui.transporter.ingredients.cheese;
 import com.demo.overcooked.ui.transporter.transporterBasePanel;
-import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Transporter {
@@ -17,26 +13,15 @@ public class Transporter {
 
     GameScreenUI gameScreen;
     private static Common common = new Common();
+    private static Constants constant = new Constants();
 
     private JPanel[] transporterContainerPanels = new JPanel[5];
     private JButton[] buttons = new JButton[10];
 
     public Transporter() {
         this.gameScreen = GameScreenUI.getInstance();
-        
-        JPanel transporter = gameScreen.getTransporterPanelOne();
-        
-
-        
-        transporter.setSize(170, 200);
-        transporter.setLocation(0,0);
-        
-        transporter.add(new transporterBasePanel()  , BorderLayout.CENTER);
-        transporter.revalidate();
-        transporter.repaint();
-        
-        
-        //buttonsListeners();
+        configTransporter();
+        buttonsListeners();
     }
 
     public static Transporter getInstance() {
@@ -46,35 +31,39 @@ public class Transporter {
         return instance;
     }
 
-    private void addIngredientToOrder() {
+    private void addIngredientToOrder(JPanel transporterPanel) {
         System.out.println("com.demo.overcooked.ui.Transporter.addIngredientToOrder()");
     }
 
-    private void deleteIngredientForTransporter() {
+    private void deleteIngredientForTransporter(JPanel transporterPanel) {
         System.out.println("com.demo.overcooked.ui.Transporter.deleteIngredientForTransporter()");
     }
 
     private void buttonsListeners() {
         for (JButton button : buttons) {
             button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Code to be executed when the button is clicked
-                System.out.println("Button clicked!");
-            }
-        });
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JPanel parentPanel = (JPanel) button.getParent();
+
+                    if (button.getName().contains("add")) {
+                        addIngredientToOrder(parentPanel);
+                    } else {
+                        deleteIngredientForTransporter(parentPanel);
+                    }
+                }
+            });
         }
     }
 
-    public void setOpaqueTransporterComponents() {
-        common.setPanelsOpaque(transporterContainerPanels);
-        common.setBtnsOpaque(buttons);
-    }
-
-    private Component[] getComponents(String componentsName) {
+    private Component[] getComponents(JPanel parentPanel, String componentsName) {
         Component[] screenComponents = gameScreen.getContentPane().getComponents();
-        int componentsSize = 0;
 
+        if (parentPanel != null) {
+            screenComponents = parentPanel.getComponents();
+        }
+
+        int componentsSize = 0;
         for (Component screenComponent : screenComponents) {
             if (componentHasName(screenComponent, componentsName)) {
                 componentsSize++;
@@ -101,7 +90,11 @@ public class Transporter {
     }
 
     private void populatePanelsAndBtnsArrays() {
-        Component[] transporterPanels = getComponents("transporter");
+        Component[] transporterPanels = getComponents(
+                null,
+                "transporter"
+        );
+        Component[][] childBtns = new Component[5][2];
 
         int indexPanels = 0;
         int indexBtns = 0;
@@ -110,17 +103,50 @@ public class Transporter {
             JPanel panel = (JPanel) panelComponent;
             this.transporterContainerPanels[indexPanels] = panel;
             indexPanels++;
-            
-            buttons[indexBtns] = (JButton) panel.getComponents()[0];
-            buttons[indexBtns+1] = (JButton) panel.getComponents()[1];
+
+            JPanel childPanel = (JPanel) panel.getComponents()[0];
+            Component[] childPanelBtns = getComponents(
+                    childPanel,
+                    "btn"
+            );
+            childBtns[indexBtns] = childPanelBtns;
             indexBtns++;
+        }
+
+        int indexChildBtns = 0;
+        for (Component[] btns : childBtns) {
+            this.buttons[indexChildBtns] = (JButton) btns[0];
+            this.buttons[indexChildBtns + 1] = (JButton) btns[1];
+            indexChildBtns = indexChildBtns + 2;
         }
     }
 
+    public void addBasePanelToContainerPanels() {
+        Component[] transporterPanels = getComponents(
+                null,
+                "transporter"
+        );
+
+        for (Component transporterPanel : transporterPanels) {
+            JPanel basePanel = new transporterBasePanel();
+            common.addContentToPanel(
+                    (JPanel) transporterPanel,
+                    basePanel,
+                    constant.TRANSPORTER_BASE_PANEL
+            );
+
+            basePanel.setName(constant.TRANSPORTER_BASE_NAME);
+        }
+    }
+    
+    
+    public void setOpaqueTransporterComponents() {
+        common.setPanelsOpaque(transporterContainerPanels);
+    }
+
     public void configTransporter() {
-        
-        
-        //populatePanelsAndBtnsArrays();
-        //setOpaqueTransporterComponents();
+        addBasePanelToContainerPanels();
+        populatePanelsAndBtnsArrays();
+        setOpaqueTransporterComponents();
     }
 }

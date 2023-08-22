@@ -14,44 +14,38 @@ import java.awt.Component;
 import java.util.Random;
 import javax.swing.JPanel;
 
-
 public class Orders {
+
     private static Orders instance;
-    
+
     private GameScreenUI gameScreen;
-    
+
     private JPanel[] ordersContainers = new JPanel[3];
     private JPanel mainOrderPanel;
-    
+
     private Cola ordenes;
-    
+
+    private Common common = new Common();
     private static Constants constant = new Constants();
-    
-    
-    
-    
-    
-    
-    public Orders(){
+
+    public Orders() {
         this.gameScreen = GameScreenUI.getInstance();
-        this.ordenes = Cola.getInstance(); 
-        
+        this.ordenes = Cola.getInstance();
+
         this.ordersContainers[0] = gameScreen.getOrderOnePanel();
         this.ordersContainers[1] = gameScreen.getOrderTwoPanel();
         this.ordersContainers[2] = gameScreen.getOrderThreePanel();
         this.mainOrderPanel = gameScreen.getMainOrderPanel();
         setOpaqueOrderComponents();
     }
-    
+
     private void clearPanel(JPanel panel) {
         panel.removeAll();
         panel.revalidate();
         panel.repaint();
     }
 
-    
-    
-     public void completeOrder() {
+    public void completeOrder() {
         new Points().pointsSystem();
         ordenes.desencola();
 
@@ -59,18 +53,21 @@ public class Orders {
             JPanel orderContainer = ordersContainers[i];
             clearPanel(orderContainer);
 
-            if (i + 1 < ordersContainers.length && ordersContainers[i + 1].getComponents().length != 0) {
+            if (i + 1 < ordersContainers.length
+                    && ordersContainers[i + 1].getComponents().length != 0) {
                 JPanel nextOrderContainer = ordersContainers[i + 1];
 
                 JPanel nextOrder = (JPanel) nextOrderContainer.getComponents()[0];
-                addContentToOrderPanel(orderContainer, nextOrder);
+                common.addContentToPanel(
+                        orderContainer,
+                        nextOrder,
+                        constant.TINY_ORDERS_SIZE
+                );
                 clearPanel(nextOrderContainer);
 
                 refreshMainOrderPanelContent();
             }
-            
-            
-            
+
         }
     }
 
@@ -111,18 +108,6 @@ public class Orders {
         this.mainOrderPanel.repaint();
     }
 
-    private void addContentToOrderPanel(
-            JPanel orderParentPanel,
-            JPanel orderContent
-    ) {
-        orderContent.setSize(195, 156);
-        orderContent.setLocation(0, 0);
-
-        orderParentPanel.add(orderContent, BorderLayout.CENTER);
-        orderParentPanel.revalidate();
-        orderParentPanel.repaint();
-    }
-
     public void addNewOrder() {
         for (JPanel parentPanel : ordersContainers) {
             if (!orderParentPanelIsEmpty(parentPanel)) {
@@ -134,7 +119,11 @@ public class Orders {
             JPanel order = getRandomOrder();
             ordenes.encola(new NodoCola(new Orden(order)));
 
-            addContentToOrderPanel(parentPanel, order);
+            common.addContentToPanel(
+                    parentPanel,
+                    order,
+                    constant.TINY_ORDERS_SIZE
+            );
             refreshMainOrderPanelContent();
 
             break;
@@ -146,17 +135,14 @@ public class Orders {
 
         return orderComponents.length == 0 ? true : false;
     }
-    
-    public void setOpaqueOrderComponents(){
-        for (JPanel ordersContainer : ordersContainers) {
-            ordersContainer.setOpaque(false);
-        }
-        
-        gameScreen.getMainOrderPanel().setOpaque(false);
+
+    public void setOpaqueOrderComponents() {
+        common.setPanelsOpaque(ordersContainers);
+        common.setPanelOpaque(mainOrderPanel);
     }
-    
+
     public static Orders getInstance() {
-         if (instance == null) {
+        if (instance == null) {
             instance = new Orders();
         }
         return instance;

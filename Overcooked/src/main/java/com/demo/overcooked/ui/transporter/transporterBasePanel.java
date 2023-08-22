@@ -6,6 +6,7 @@ package com.demo.overcooked.ui.transporter;
 
 import com.demo.overcooked.ui.Common;
 import com.demo.overcooked.ui.Constants;
+import javax.swing.JButton;
 
 /**
  *
@@ -18,6 +19,10 @@ public class transporterBasePanel extends javax.swing.JPanel {
 
     public transporterBasePanel() {
         initComponents();
+        this.setOpaque(false);
+        common.setBtnsOpaque(new JButton[]{addBtn, delBtn});
+        common.setPanelOpaque(ingredientPanel);
+        
         common.setBackgroundImage(
                 background,
                 constant.TRANSPORTER_BASE_PANEL_IMG_PATH
@@ -34,25 +39,42 @@ public class transporterBasePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jRadioButton1 = new javax.swing.JRadioButton();
+        addBtn = new javax.swing.JButton();
+        delBtn = new javax.swing.JButton();
+        ingredientPanel = new javax.swing.JPanel();
         background = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        add(addBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 70, 50));
+        addBtn.setName("add-ingredient-btn");
+        add(delBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 60, 50));
+        delBtn.setName("delete-ingredient-btn");
+
+        javax.swing.GroupLayout ingredientPanelLayout = new javax.swing.GroupLayout(ingredientPanel);
+        ingredientPanel.setLayout(ingredientPanelLayout);
+        ingredientPanelLayout.setHorizontalGroup(
+            ingredientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 160, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+        ingredientPanelLayout.setVerticalGroup(
+            ingredientPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 130, Short.MAX_VALUE)
         );
+
+        add(ingredientPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 130));
+
+        background.setIcon(new javax.swing.ImageIcon("C:\\Users\\Puta'\\Desktop\\estructura-datos\\proyecto\\ProyectoEstructuraDeDatos\\Overcooked\\assets\\ingredients\\base-panel.png")); // NOI18N
+        add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 200));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addBtn;
     private javax.swing.JLabel background;
+    private javax.swing.JButton delBtn;
+    private javax.swing.JPanel ingredientPanel;
     private javax.swing.JRadioButton jRadioButton1;
     // End of variables declaration//GEN-END:variables
 }
