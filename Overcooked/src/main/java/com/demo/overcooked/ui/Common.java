@@ -1,6 +1,8 @@
 package com.demo.overcooked.ui;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
+import java.util.Random;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -46,5 +48,16 @@ public class Common {
         orderParentPanel.add(orderContent, BorderLayout.CENTER);
         orderParentPanel.revalidate();
         orderParentPanel.repaint();
+    }
+    
+    
+    public boolean orderParentPanelIsEmpty(JPanel parentOrderPanel) {
+        Component[] orderComponents = parentOrderPanel.getComponents();
+
+        return orderComponents.length == 0 ? true : false;
+    }
+    
+    public int getRandomNumber(int max){
+        return new Random().nextInt(max);
     }
 }

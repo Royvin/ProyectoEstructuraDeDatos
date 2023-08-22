@@ -10,8 +10,6 @@ import com.demo.overcooked.ui.orders.tiny.TinyCheeseBurger;
 import com.demo.overcooked.ui.orders.tiny.TinyCheeseMeatBurger;
 import com.demo.overcooked.ui.orders.tiny.TinyMeatBurger;
 import java.awt.BorderLayout;
-import java.awt.Component;
-import java.util.Random;
 import javax.swing.JPanel;
 
 public class Orders {
@@ -46,7 +44,7 @@ public class Orders {
     }
 
     public void completeOrder() {
-        new Points().pointsSystem();
+        Points.getInstance().pointsSystem();
         ordenes.desencola();
 
         for (int i = 0; i < ordersContainers.length; i++) {
@@ -78,8 +76,7 @@ public class Orders {
             new TinyCheeseMeatBurger()
         };
 
-        int randomIndex = new Random().nextInt(orders.length);
-        return orders[randomIndex];
+        return orders[common.getRandomNumber(orders.length)];
     }
 
     private JPanel getMainOrderPanel(String orderName) {
@@ -110,7 +107,7 @@ public class Orders {
 
     public void addNewOrder() {
         for (JPanel parentPanel : ordersContainers) {
-            if (!orderParentPanelIsEmpty(parentPanel)) {
+            if (!common.orderParentPanelIsEmpty(parentPanel)) {
                 continue;
             }
 
@@ -128,12 +125,6 @@ public class Orders {
 
             break;
         }
-    }
-
-    private boolean orderParentPanelIsEmpty(JPanel parentOrderPanel) {
-        Component[] orderComponents = parentOrderPanel.getComponents();
-
-        return orderComponents.length == 0 ? true : false;
     }
 
     public void setOpaqueOrderComponents() {

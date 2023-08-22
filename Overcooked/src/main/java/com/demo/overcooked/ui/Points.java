@@ -4,6 +4,7 @@ import com.demo.overcooked.estructuras.ordenes.Cola;
 
 
 public class Points {
+    private static Points instance;
     int meatBurgerPoints = 5;
     int cheeseBurgerPoints = 10;
     int ClassicBurguerPoints = 15;
@@ -29,5 +30,12 @@ public class Points {
             totalPoints+=meatBurgerPoints;
         }
         this.gameScreen.getPointsLabel().setText(totalPoints+"pts");
+    }
+    
+      public static Points getInstance() {
+        if (instance == null) {
+            instance = new Points();
+        }
+        return instance;
     }
 }
