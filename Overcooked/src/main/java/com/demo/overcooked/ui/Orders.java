@@ -25,6 +25,7 @@ public class Orders {
 
     private Common common = new Common();
     private static Constants constant = new Constants();
+    private JPanel currentMainOrderPanel;
 
     public Orders() {
         this.gameScreen = GameScreenUI.getInstance();
@@ -42,8 +43,17 @@ public class Orders {
         panel.revalidate();
         panel.repaint();
     }
+    
+    private boolean isOrderComplete(){
+        return IngredientsCounter.getInstance().allIngredientsAreInOrder();
+    }
 
     public void completeOrder() {
+        
+        if(!isOrderComplete()){
+            return;
+        }
+        
         Points.getInstance().pointsSystem();
         ordenes.desencola();
 
@@ -92,12 +102,13 @@ public class Orders {
     private void refreshMainOrderPanelContent() {
         String currentOrderName = Cola.getInstance().getFrente().getName();
         JPanel mainOrder = getMainOrderPanel(currentOrderName);
+        currentMainOrderPanel = mainOrder;
 
         mainOrder.setSize(610, 320);
         mainOrder.setLocation(0, 0);
 
         this.mainOrderPanel.removeAll();
-        this.mainOrderPanel.add(
+        this.mainOrderPanel.add( 
                 mainOrder,
                 BorderLayout.CENTER
         );
@@ -132,10 +143,19 @@ public class Orders {
         common.setPanelOpaque(mainOrderPanel);
     }
 
+    public JPanel getCurrentMainOrderPanel() {
+        return currentMainOrderPanel;
+    }
+    
+    public String getCurrentMainOrderName(){
+        return ordenes.getFrente().getName();    
+    }
+    
     public static Orders getInstance() {
         if (instance == null) {
             instance = new Orders();
         }
         return instance;
-    }
+    } 
+
 }

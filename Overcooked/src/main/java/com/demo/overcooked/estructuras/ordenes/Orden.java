@@ -24,7 +24,5 @@ public class Orden {
 
     public void setOrden(JPanel orden) {
         this.orden = orden;
-    }
-    
-    
+    } 
 }

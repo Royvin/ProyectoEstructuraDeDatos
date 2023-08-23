@@ -36,6 +36,40 @@ public class Common {
         ImageIcon image = new ImageIcon(imagePath);
         backgroundLbl.setIcon(image);
     }
+    
+    public Component[] getComponents(JPanel parentPanel, String componentsName) {
+        Component[] screenComponents = 
+                GameScreenUI.getInstance().getContentPane().getComponents();
+
+        if (parentPanel != null) {
+            screenComponents = parentPanel.getComponents();
+        }
+
+        int componentsSize = 0;
+        for (Component screenComponent : screenComponents) {
+            if (componentHasName(screenComponent, componentsName)) {
+                componentsSize++;
+            }
+        }
+
+        Component[] components = new Component[componentsSize];
+        int componentsIndexer = 0;
+
+        for (Component screenComponent : screenComponents) {
+            if (componentHasName(screenComponent, componentsName)) {
+                components[componentsIndexer] = screenComponent;
+                componentsIndexer++;
+            }
+        }
+
+        return components;
+    }
+    
+    private boolean componentHasName(Component component, String name) {
+        return component.getName() != null
+                && component.getName().contains(name)
+                ? true : false;
+    }
 
     public void addContentToPanel(
             JPanel orderParentPanel,

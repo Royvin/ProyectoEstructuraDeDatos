@@ -1,24 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package com.demo.overcooked.ui.transporter.ingredients;
 
+import com.demo.overcooked.ui.Constants;
 import javax.swing.ImageIcon;
 
-/**
- *
- * @author Puta'
- */
+
 public class lettuce extends javax.swing.JPanel {
 
-    /**
-     * Creates new form lettuce
-     */
+    Constants constant = new Constants();
+
     public lettuce() {
         initComponents();
         this.setOpaque(false);
-
+        this.setName(constant.INGREDIENT_LETTUCE);
+        
         ImageIcon image = new ImageIcon("assets/ingredients/lettuce.png");
         background.setIcon(image);
     }

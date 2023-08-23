@@ -43,6 +43,8 @@ public class Timers {
     }
 
     private void timerNewOrder() {
+        Orders.getInstance().addNewOrder();
+        
         Thread hilo = new Thread() {
             public void run() {
                 while (true) {

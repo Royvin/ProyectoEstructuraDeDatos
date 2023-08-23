@@ -5,6 +5,7 @@ import com.demo.overcooked.ui.Constants;
 import com.demo.overcooked.ui.GameScreen;
 import com.demo.overcooked.ui.Orders;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class BigCheeseBurger extends javax.swing.JPanel {
 
@@ -22,7 +23,7 @@ public class BigCheeseBurger extends javax.swing.JPanel {
         common.setBackgroundImage(
                 background,
                 constant.BIG_CHEESE_IMG_PATH
-        );
+        );        
     }
 
     /**
@@ -50,8 +51,7 @@ public class BigCheeseBurger extends javax.swing.JPanel {
         ingredientsCounter.setFont(new java.awt.Font("Poppins Black", 0, 20)); // NOI18N
         ingredientsCounter.setForeground(new java.awt.Color(83, 49, 30));
         add(ingredientsCounter, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 56, 90, 30));
-
-        background.setIcon(new javax.swing.ImageIcon("C:\\Users\\Puta'\\Desktop\\estructura-datos\\proyecto\\ProyectoEstructuraDeDatos\\Overcooked\\assets\\orders\\big-cheese.png")); // NOI18N
+        ingredientsCounter.setName("counter-label");
         add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 610, 320));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -59,6 +59,10 @@ public class BigCheeseBurger extends javax.swing.JPanel {
         System.out.println("completeOrderBtnMouseClicked()");
         orders.completeOrder();
     }//GEN-LAST:event_completeOrderBtnMouseClicked
+
+    public JLabel getIngredientsCounter() {
+        return ingredientsCounter;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;

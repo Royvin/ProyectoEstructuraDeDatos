@@ -1,6 +1,7 @@
 package com.demo.overcooked.ui;
 
 import com.demo.overcooked.estructuras.cinta.CircularList;
+import com.demo.overcooked.estructuras.cinta.Ingredient;
 import com.demo.overcooked.ui.transporter.ingredients.bread;
 import com.demo.overcooked.ui.transporter.ingredients.cheese;
 import com.demo.overcooked.ui.transporter.ingredients.lettuce;
@@ -22,42 +23,70 @@ public class Transporter {
 
     private JPanel[] transporterContainerPanels = new JPanel[5];
     private JButton[] buttons = new JButton[10];
-    
+
     private CircularList ingredientsTransporter = new CircularList();
+    IngredientsCounter ingredientsCounter;
 
     public Transporter() {
         this.gameScreen = GameScreenUI.getInstance();
+        this.ingredientsCounter = IngredientsCounter.getInstance();
         configTransporter();
         buttonsListeners();
         populateTransporter();
     }
-    
-    public void populateTransporter(){
+
+    public void populateTransporter() {
         for (JPanel transporterContainerPanel : transporterContainerPanels) {
             JPanel basePanel = (JPanel) transporterContainerPanel.getComponents()[0];
-            JPanel ingredientPanel = (JPanel) getComponents(basePanel, "panel")[0];
-            
-            common.addContentToPanel(ingredientPanel, getRandomIngredient(), constant.INGREDIENT_PANEL_SIZE);
+            JPanel ingredientPanel = (JPanel) common.getComponents(
+                    basePanel,
+                    "panel"
+            )[0];
+
+            if (!common.panelIsEmpty(ingredientPanel)) {
+                continue;
+            }
+
+            JPanel ingredient = getRandomIngredient();
+
+            common.addContentToPanel(ingredientPanel, ingredient, constant.INGREDIENT_PANEL_SIZE);
+            ingredientsTransporter.inserta(new Ingredient(ingredient));
         }
+
+        System.out.println(ingredientsTransporter.getNodehead().getDato().getIngredient().getName());
     }
-    
-    public JPanel getRandomIngredient(){
+
+    public JPanel getRandomIngredient() {
         JPanel[] ingredients = new JPanel[]{
             new lettuce(),
             new cheese(),
             new bread(),
             new meat()
         };
-        
+
         return ingredients[common.getRandomNumber(ingredients.length)];
     }
 
     private void addIngredientToOrder(JPanel transporterPanel) {
-        System.out.println("com.demo.overcooked.ui.Transporter.addIngredientToOrder()");
+        JPanel ingredientPanel = (JPanel) common.getComponents(
+                transporterPanel,
+                "panel"
+        )[0];
+        String ingredient = ingredientPanel.getComponents()[0].getName();
+
+        if (ingredientsCounter.isIngredientPartOfOrder(ingredient)) {
+            ingredientsCounter.updateIngredientsCounter(ingredient);
+        }
+
     }
 
     private void deleteIngredientForTransporter(JPanel transporterPanel) {
-        System.out.println("com.demo.overcooked.ui.Transporter.deleteIngredientForTransporter()");
+        JPanel ingredientPanel = (JPanel) common.getComponents(
+                transporterPanel,
+                "panel"
+        )[0];
+        ingredientPanel.removeAll();
+        populateTransporter();        
     }
 
     private void buttonsListeners() {
@@ -77,41 +106,8 @@ public class Transporter {
         }
     }
 
-    private Component[] getComponents(JPanel parentPanel, String componentsName) {
-        Component[] screenComponents = gameScreen.getContentPane().getComponents();
-
-        if (parentPanel != null) {
-            screenComponents = parentPanel.getComponents();
-        }
-
-        int componentsSize = 0;
-        for (Component screenComponent : screenComponents) {
-            if (componentHasName(screenComponent, componentsName)) {
-                componentsSize++;
-            }
-        }
-
-        Component[] components = new Component[componentsSize];
-        int componentsIndexer = 0;
-
-        for (Component screenComponent : screenComponents) {
-            if (componentHasName(screenComponent, componentsName)) {
-                components[componentsIndexer] = screenComponent;
-                componentsIndexer++;
-            }
-        }
-
-        return components;
-    }
-
-    private boolean componentHasName(Component component, String name) {
-        return component.getName() != null
-                && component.getName().contains(name)
-                ? true : false;
-    }
-
     private void populatePanelsAndBtnsArrays() {
-        Component[] transporterPanels = getComponents(
+        Component[] transporterPanels = common.getComponents(
                 null,
                 "transporter"
         );
@@ -126,7 +122,7 @@ public class Transporter {
             indexPanels++;
 
             JPanel childPanel = (JPanel) panel.getComponents()[0];
-            Component[] childPanelBtns = getComponents(
+            Component[] childPanelBtns = common.getComponents(
                     childPanel,
                     "btn"
             );
@@ -142,8 +138,8 @@ public class Transporter {
         }
     }
 
-    public void addBasePanelToContainerPanels() {
-        Component[] transporterPanels = getComponents(
+    private void addBasePanelToContainerPanels() {
+        Component[] transporterPanels = common.getComponents(
                 null,
                 "transporter"
         );
@@ -159,19 +155,18 @@ public class Transporter {
             basePanel.setName(constant.TRANSPORTER_BASE_NAME);
         }
     }
-    
-    
-    public void setOpaqueTransporterComponents() {
+
+    private void setOpaqueTransporterComponents() {
         common.setPanelsOpaque(transporterContainerPanels);
     }
 
-    public void configTransporter() {
+    private void configTransporter() {
         addBasePanelToContainerPanels();
         populatePanelsAndBtnsArrays();
         setOpaqueTransporterComponents();
     }
-    
-      public static Transporter getInstance() {
+
+    public static Transporter getInstance() {
         if (instance == null) {
             instance = new Transporter();
         }
