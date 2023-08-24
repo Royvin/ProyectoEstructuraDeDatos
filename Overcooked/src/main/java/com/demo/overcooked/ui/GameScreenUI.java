@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.demo.overcooked.ui;
 
 
@@ -9,20 +5,28 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
-/**
- *
- * @author Puta'
- */
+
+
+
 public class GameScreenUI extends javax.swing.JFrame {
 
     private static GameScreenUI instance;
+    File file = new File("assets/Sounds/SoundtrackInGame.wav");
+    static Clip gameWAV;
 
     private GameScreenUI() {
         initComponents();
         this.setLocationRelativeTo(this);
         ImageIcon image = new ImageIcon("assets/backgrounds/GameScreen1.png");
         background.setIcon(image);
+        reproducir(file);
     }
     
 
@@ -289,6 +293,23 @@ public class GameScreenUI extends javax.swing.JFrame {
         }
         return instance;
     }
+    
+      public static void SetIntroWAV(Clip clip) {
+        gameWAV = clip;
+    }
+
+    public static void reproducir(File file) {
+        try {
+            Clip sound = AudioSystem.getClip();
+            sound.open(AudioSystem.getAudioInputStream(file));
+            SetIntroWAV(sound);
+            sound.start();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;

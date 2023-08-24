@@ -27,20 +27,14 @@ public class meat extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        addIngredient = new javax.swing.JButton();
-        deleteIngredient = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(addIngredient, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 70, 50));
-        add(deleteIngredient, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 60, 50));
         add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 120));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addIngredient;
     private javax.swing.JLabel background;
-    private javax.swing.JButton deleteIngredient;
     // End of variables declaration//GEN-END:variables
 }

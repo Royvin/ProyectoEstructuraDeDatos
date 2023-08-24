@@ -1,23 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.demo.overcooked.ui;
 
 import javax.swing.ImageIcon;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
-/**
- *
- * @author Puta'
- */
 public class MainMenu extends javax.swing.JFrame {
+
+    File file = new File("assets/Sounds/SoundtrackMenu.wav");
+    static Clip introWAV;
 
     public MainMenu() {
         initComponents();
         initMainMenu();
-        
+
         ImageIcon image = new ImageIcon("assets/backgrounds/MainMenu.png");
         backgroundLbl.setIcon(image);
+        reproducir(file);
     }
 
     /**
@@ -58,6 +60,7 @@ public class MainMenu extends javax.swing.JFrame {
     private void playBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playBtnMouseClicked
         this.setVisible(false);
         new GameScreen();
+        introWAV.stop();
     }//GEN-LAST:event_playBtnMouseClicked
 
     /**
@@ -98,10 +101,26 @@ public class MainMenu extends javax.swing.JFrame {
     private void initMainMenu() {
         this.setLocationRelativeTo(this);
         this.setTitle("Main menu");
-        
+
         playBtn.setOpaque(false);
         playBtn.setContentAreaFilled(false);
         playBtn.setBorderPainted(false);
+    }
+
+    public static void SetIntroWAV(Clip clip) {
+        introWAV = clip;
+    }
+
+    public static void reproducir(File file) {
+        try {
+            Clip sound = AudioSystem.getClip();
+            sound.open(AudioSystem.getAudioInputStream(file));
+            SetIntroWAV(sound);
+            sound.start();
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -38,7 +38,8 @@ public class Transporter {
 
     public void populateTransporter() {
         for (JPanel transporterContainerPanel : transporterContainerPanels) {
-            JPanel basePanel = (JPanel) transporterContainerPanel.getComponents()[0];
+            JPanel basePanel = 
+                    (JPanel) transporterContainerPanel.getComponents()[0];
             JPanel ingredientPanel = (JPanel) common.getComponents(
                     basePanel,
                     "panel"
@@ -49,10 +50,13 @@ public class Transporter {
             }
 
             JPanel ingredient = getRandomIngredient();
+            common.addContentToPanel(
+                    ingredientPanel,
+                    ingredient,
+                    constant.INGREDIENT_PANEL_SIZE
+            );
             
-            common.addContentToPanel(ingredientPanel, ingredient, constant.INGREDIENT_PANEL_SIZE);
             ingredientsTransporter.inserta(new Ingredient(ingredient));
-
         }
     }
 
@@ -67,6 +71,15 @@ public class Transporter {
         return ingredients[common.getRandomNumber(ingredients.length)];
     }
 
+    private void deleteIngredientForTransporter(JPanel ingredientPanel) {
+        ingredientsTransporter.elimina((JPanel) ingredientPanel.getComponents()[0]);
+        common.clearPanel(ingredientPanel);
+    }
+
+    private boolean transporterHasOnly3Ingredients() {
+        return ingredientsTransporter.getSize() == 3 ? true : false;
+    }
+
     private void addIngredientToOrder(JPanel basePanel) {
         JPanel ingredientPanel = (JPanel) common.getComponents(
                 basePanel,
@@ -76,28 +89,9 @@ public class Transporter {
 
         if (ingredientsCounter.isIngredientPartOfOrder(ingredient)) {
             ingredientsCounter.updateIngredientsCounter(ingredient);
-
             deleteIngredientForTransporter(ingredientPanel);
         }
 
-    }
-
-    private void deleteIngredientForTransporter(JPanel ingredientPanel) {
-       ingredientsTransporter.elimina((JPanel) ingredientPanel.getComponents()[0]);
-       common.clearPanel(ingredientPanel);
-        
-        JPanel firstIngredientPanel = ingredientsTransporter.getHeadPanel();
-        Node firstIngredientNode = ingredientsTransporter.getHeadNode();
-        
-       
-       
-        while (true) {            
-            
-        }
-    }
-
-    public boolean transporterHasOnly3Ingredients() {
-        return ingredientsTransporter.getSize() == 3 ? true : false;
     }
 
     private void buttonsListeners() {

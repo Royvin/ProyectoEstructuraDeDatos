@@ -35,16 +35,16 @@ public class CircularList {
     public void elimina(JPanel ingredient) {
         if (head != null) {
             if (head.getDato().getIngredient() == ingredient) {
-                System.out.println("head" + head.getDato().getId() + head.getDato().getIngredient().getName());
+                //System.out.println("head" + head.getDato().getId() + head.getDato().getIngredient().getName());
                 head = head.getNext();
             } else {
                 Node aux = head;
                 while (aux.getNext().getDato().getIngredient() != ingredient) {
                     aux = aux.getNext();
-                    System.out.println(aux.getNext().getDato().getId());
+                    //System.out.println(aux.getNext().getDato().getId());
                 }
                 if (aux.getNext().getDato().getIngredient() == ingredient) {
-                    System.out.println("found" + aux.getNext().getDato().getId()  + aux.getNext().getDato().getIngredient().getName());
+                    //System.out.println("found" + aux.getNext().getDato().getId()  + aux.getNext().getDato().getIngredient().getName());
                     aux.setNext(aux.getNext().getNext());
 
                 }
