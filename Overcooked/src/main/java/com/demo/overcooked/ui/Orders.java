@@ -37,12 +37,6 @@ public class Orders {
         this.mainOrderPanel = gameScreen.getMainOrderPanel();
         setOpaqueOrderComponents();
     }
-
-    private void clearPanel(JPanel panel) {
-        panel.removeAll();
-        panel.revalidate();
-        panel.repaint();
-    }
     
     private boolean isOrderComplete(){
         return IngredientsCounter.getInstance().allIngredientsAreInOrder();
@@ -59,7 +53,7 @@ public class Orders {
 
         for (int i = 0; i < ordersContainers.length; i++) {
             JPanel orderContainer = ordersContainers[i];
-            clearPanel(orderContainer);
+            common.clearPanel(orderContainer);
 
             if (i + 1 < ordersContainers.length
                     && ordersContainers[i + 1].getComponents().length != 0) {
@@ -71,7 +65,7 @@ public class Orders {
                         nextOrder,
                         constant.TINY_ORDERS_SIZE
                 );
-                clearPanel(nextOrderContainer);
+                common.clearPanel(nextOrderContainer);
 
                 refreshMainOrderPanelContent();
             }

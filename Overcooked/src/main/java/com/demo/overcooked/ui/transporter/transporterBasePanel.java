@@ -20,6 +20,8 @@ public class transporterBasePanel extends javax.swing.JPanel {
     public transporterBasePanel() {
         initComponents();
         this.setOpaque(false);
+        this.setName(constant.TRANSPORTER_BASE_NAME);
+        
         common.setBtnsOpaque(new JButton[]{addBtn, delBtn});
         common.setPanelOpaque(ingredientPanel);
         

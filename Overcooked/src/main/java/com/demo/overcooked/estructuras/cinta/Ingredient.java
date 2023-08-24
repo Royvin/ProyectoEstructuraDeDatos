@@ -4,13 +4,15 @@ import javax.swing.JPanel;
 
 
 public class Ingredient {
-    private int Id = 0;
+    private static int Id = 0;
+    private int ownId;
     private JPanel ingredient;
     
 
     public Ingredient(JPanel ingredient) {
         this.ingredient = ingredient;
-        this.Id = Id+=1;
+        this.Id++;
+        this.ownId = Id;
     }
 
     public JPanel getIngredient() {
@@ -22,7 +24,7 @@ public class Ingredient {
     }
 
     public int getId() {
-        return Id;
+        return this.ownId;
     }
 
     public void setId(int Id) {

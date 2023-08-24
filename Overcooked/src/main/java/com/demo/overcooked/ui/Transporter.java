@@ -2,6 +2,7 @@ package com.demo.overcooked.ui;
 
 import com.demo.overcooked.estructuras.cinta.CircularList;
 import com.demo.overcooked.estructuras.cinta.Ingredient;
+import com.demo.overcooked.estructuras.cinta.Node;
 import com.demo.overcooked.ui.transporter.ingredients.bread;
 import com.demo.overcooked.ui.transporter.ingredients.cheese;
 import com.demo.overcooked.ui.transporter.ingredients.lettuce;
@@ -48,12 +49,11 @@ public class Transporter {
             }
 
             JPanel ingredient = getRandomIngredient();
-
+            
             common.addContentToPanel(ingredientPanel, ingredient, constant.INGREDIENT_PANEL_SIZE);
             ingredientsTransporter.inserta(new Ingredient(ingredient));
-        }
 
-        System.out.println(ingredientsTransporter.getNodehead().getDato().getIngredient().getName());
+        }
     }
 
     public JPanel getRandomIngredient() {
@@ -67,26 +67,37 @@ public class Transporter {
         return ingredients[common.getRandomNumber(ingredients.length)];
     }
 
-    private void addIngredientToOrder(JPanel transporterPanel) {
+    private void addIngredientToOrder(JPanel basePanel) {
         JPanel ingredientPanel = (JPanel) common.getComponents(
-                transporterPanel,
+                basePanel,
                 "panel"
         )[0];
         String ingredient = ingredientPanel.getComponents()[0].getName();
 
         if (ingredientsCounter.isIngredientPartOfOrder(ingredient)) {
             ingredientsCounter.updateIngredientsCounter(ingredient);
+
+            deleteIngredientForTransporter(ingredientPanel);
         }
 
     }
 
-    private void deleteIngredientForTransporter(JPanel transporterPanel) {
-        JPanel ingredientPanel = (JPanel) common.getComponents(
-                transporterPanel,
-                "panel"
-        )[0];
-        ingredientPanel.removeAll();
-        populateTransporter();        
+    private void deleteIngredientForTransporter(JPanel ingredientPanel) {
+       ingredientsTransporter.elimina((JPanel) ingredientPanel.getComponents()[0]);
+       common.clearPanel(ingredientPanel);
+        
+        JPanel firstIngredientPanel = ingredientsTransporter.getHeadPanel();
+        Node firstIngredientNode = ingredientsTransporter.getHeadNode();
+        
+       
+       
+        while (true) {            
+            
+        }
+    }
+
+    public boolean transporterHasOnly3Ingredients() {
+        return ingredientsTransporter.getSize() == 3 ? true : false;
     }
 
     private void buttonsListeners() {
@@ -94,12 +105,20 @@ public class Transporter {
             button.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    JPanel parentPanel = (JPanel) button.getParent();
+                    JPanel basePanel = (JPanel) button.getParent();
 
                     if (button.getName().contains("add")) {
-                        addIngredientToOrder(parentPanel);
+                        addIngredientToOrder(basePanel);
                     } else {
-                        deleteIngredientForTransporter(parentPanel);
+                        JPanel ingredientPanel = (JPanel) common.getComponents(
+                                basePanel,
+                                "panel"
+                        )[0];
+                        deleteIngredientForTransporter(ingredientPanel);
+                    }
+
+                    if (transporterHasOnly3Ingredients()) {
+                        populateTransporter();
                     }
                 }
             });
@@ -107,7 +126,7 @@ public class Transporter {
     }
 
     private void populatePanelsAndBtnsArrays() {
-        Component[] transporterPanels = common.getComponents(
+        Component[] containerPanels = common.getComponents(
                 null,
                 "transporter"
         );
@@ -116,8 +135,8 @@ public class Transporter {
         int indexPanels = 0;
         int indexBtns = 0;
 
-        for (Component panelComponent : transporterPanels) {
-            JPanel panel = (JPanel) panelComponent;
+        for (Component container : containerPanels) {
+            JPanel panel = (JPanel) container;
             this.transporterContainerPanels[indexPanels] = panel;
             indexPanels++;
 
@@ -151,8 +170,6 @@ public class Transporter {
                     basePanel,
                     constant.TRANSPORTER_BASE_PANEL
             );
-
-            basePanel.setName(constant.TRANSPORTER_BASE_NAME);
         }
     }
 

@@ -10,6 +10,12 @@ import javax.swing.JPanel;
 
 public class Common {
 
+      public void clearPanel(JPanel panel) {
+        panel.removeAll();
+        panel.revalidate();
+        panel.repaint();
+    }
+    
     public void setPanelOpaque(JPanel panel) {
         panel.setOpaque(false);
     }
